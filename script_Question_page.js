@@ -175,13 +175,14 @@ function generateQuiz() {
 
   // genera il codice HTML per la domanda e le risposte e il timer
   const quiz = `
+
+  <div id="countdown">
+  <div id="countdown-number"></div>
+  <svg>
+    <circle r="18" cx="20" cy="20"></circle>
+  </svg>
+</div>
       <h2>${question}</h2>
-      <div id="countdown">
-        <div id="countdown-number"></div>
-        <svg>
-          <circle r="18" cx="20" cy="20"></circle>
-        </svg>
-      </div>
       <form>
       ${answers
         .map(
@@ -227,14 +228,19 @@ generateQuiz(); // mostra la prima domanda
 // }, 1000); // Aggiorna il timer ogni secondo
 
 let countdownNumberEl = document.getElementById("countdown-number");
-let countdown = 60;
+let countdown = 10;
 
-countdownNumberEl.innerText = `${countdown}`;
+countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
 
 setInterval(function () {
-  countdown = --countdown <= 0 ? 10 : countdown;
-
-  countdownNumberEl.innerText = `${countdown}`;
+  countdown = --countdown;
+  if (countdown === 0) {
+    countdown = 10;
+    currentQuestion++;
+    generateQuiz();
+    countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+  }
+  countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
 }, 1000);
 
 quizContainer.onclick = function (e) {
@@ -260,7 +266,7 @@ function showResults() {
 
 quizContainer.addEventListener("submit", (event) => {
   event.preventDefault(); // impedisci il submit del form
-  timer = timerTot;
+  countdown = 10;
   // recupera la risposta selezionata dall'utente
   const selected = document.querySelector(
     `input[name=question${currentQuestion}]:checked`

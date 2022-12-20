@@ -39,7 +39,7 @@ button {
 }
 #countdown {
   position: relative;
-  margin: auto;
+  margin-left: 80%;
   margin-top: 100px;
   height: 40px;
   width: 40px;
@@ -49,26 +49,29 @@ button {
 #countdown-number {
   color: rgb(255, 0, 0);
   display: inline-block;
-  line-height: 40px;
+  line-height: 10px;
 }
-
-svg {
-  position: absolute;
-  top: 0;
+z svg {
+  position: relative;
+  margin-top: 110px;
   right: 0;
-  width: 40px;
-  height: 40px;
+  height: 40%;
+  width: 40%;
   transform: rotateY(-180deg) rotateZ(-90deg);
+  border-radius: 150px;
 }
 
 svg circle {
+  margin-top: 0px;
+  margin-left: 90%;
   stroke-dasharray: 113px;
   stroke-dashoffset: 0px;
   stroke-linecap: round;
-  stroke-width: 2px;
-  stroke: rgb(30, 0, 255);
+  stroke-width: 4px;
+  stroke: rgb(5, 247, 255);
   fill: none;
-  animation: countdown 60s linear infinite forwards;
+  animation: countdown 10s linear infinite forwards;
+  border-radius: 150px;
 }
 
 @keyframes countdown {
