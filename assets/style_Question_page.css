@@ -7,15 +7,27 @@ h1 {
   font-size: 60px;
 }
 h2 {
+  color: white;
   font-size: 50px;
+}
+label {
+  color: white;
 }
 h3 {
   color: darkorchid;
   font-size: 30px;
 }
 button {
-  width: 200px;
+  margin-left: 5%;
+  width: 100px;
   height: 55px;
+  background-color: rgba(95, 95, 95, 0.086);
+  color: white;
+  border-radius: 10px;
+  border: 1px solid;
+}
+button:hover {
+  background-color: rgba(212, 0, 255, 0.18);
 }
 .p2 {
   font-size: 20px;
@@ -33,6 +45,10 @@ button {
   transition: width 1s linear;
 }
 
+body {
+  background-image: url("/assets/img/bg.jpg");
+  background-size: cover;
+}
 .red {
   font-style: italic;
   color: red;
@@ -68,7 +84,7 @@ svg circle {
   stroke-dashoffset: 0px;
   stroke-linecap: round;
   stroke-width: 4px;
-  stroke: rgb(5, 247, 255);
+  stroke: #00ffff;
   fill: none;
   animation: countdown 10s linear infinite forwards;
   border-radius: 150px;
