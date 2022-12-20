@@ -1,0 +1,99 @@
+*{
+    
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
+img {
+        height: 50px;
+        width: 130px;
+        margin-left: 250px;
+        margin-top: 40px;
+       }
+    
+
+
+body{
+    
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../img/bg.jpg");
+
+
+}
+
+main{
+    display: flex
+}
+
+h1, h3 {
+    text-align: center;
+}
+h1{
+    font-size: 60px;
+    color: #ffffff;
+}
+h2{
+    font-size: 50px;
+}
+h3{
+
+    font-size: 30px;
+    color: #ffffff;
+}
+button{
+    width: 200px;
+    height: 55px;
+}
+.p2{
+    font-size: 20px;
+}
+
+ #myChart {
+
+    height: 600px;
+    width: 550px;
+    margin: 3em auto 6em auto;
+    box-sizing: border-box;
+    margin: 0;
+    display: inline-block;
+    box-sizing: border-box;
+    height: 1213px;
+    width: 677px;
+    height: 40em;
+    margin-bottom: 3em;
+    
+
+}
+
+
+
+
+#left{
+    display: inline-block;
+    width: 400px;
+    height: 400px;
+    background-color: red;
+}
+    
+#right{
+    display: inline-block;
+    width: 400px;
+    height: 400px;
+    background-color: red;
+}
+
+
+a{
+    font-size: 30px;
+    border: 1px solid #ffffff;
+    text-decoration: none;
+    padding: 0.5em 2em 0.5em 2em;
+    font-weight: 800;
+    margin: 0 auto;
+    color: #ffffff;
+    width: 10%;
+    display: block
+}
