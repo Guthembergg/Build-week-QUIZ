@@ -185,7 +185,7 @@ function generateQuiz() {
         .map(
           (answer) => `
             <label>
-              <input type="radio" name="question${currentQuestion}" value="${answer}" id="${answer}" required>
+              <input type="radio" name="question${currentQuestion}" value="${answer}" " >
               ${answer}
             </label>
           `
@@ -224,7 +224,13 @@ interval = setInterval(function () {
   }
 }, 1000); // Aggiorna il timer ogni secondo
 
-// funzione per mostrare i risultati del quiz
+quizContainer.onclick = function (e) {
+  if (e.target.tagName === "INPUT") {
+    if (e.target.value !== questions[currentQuestion].correct_answer) {
+      e.target.parentElement.classList.toggle("red");
+    }
+  }
+};
 
 function showResults() {
   // recupera il numero totale di domande
@@ -252,8 +258,8 @@ quizContainer.addEventListener("submit", (event) => {
   if (answer === questions[currentQuestion].correct_answer) {
     score++; // aumenta il punteggio di 1
   } else {
-    const radioSelected = document.getElementById(`${answer}`);
-    radioSelected.checked.classList.add("red");
+    //console.log(selected);
+    //selected.classList.add("red");
   }
 
   selected.checked = false; // deseleziona la risposta selezionata

@@ -34,7 +34,6 @@ button {
 }
 
 .red {
+  font-style: italic;
   color: red;
-  background-color: #00bfff;
-  font-weight: 800;
 }
