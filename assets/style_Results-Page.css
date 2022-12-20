@@ -1,0 +1,51 @@
+*{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    
+    color: white;
+}
+
+body{
+    background-image: url("img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+h1{
+    font-size: 60px;
+}
+h2{
+    font-size: 50px;
+}
+h3{
+    
+    font-size: 30px;
+}
+button{
+    width: 200px;
+    height: 55px;
+}
+.p2{
+    font-size: 20px;
+}
+
+canvas {
+    
+    height: 600px;
+    width: 550px;
+    margin: 3em auto 9em auto;
+    
+
+}
+
+
+a{
+    font-size: 30px;
+    border: 1px solid #ffffff;
+    text-decoration: none;
+    padding: 0.5em 2em 0.5em 2em;
+    font-weight: 800;
+    margin: 0 auto;
+}
