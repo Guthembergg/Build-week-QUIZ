@@ -175,20 +175,26 @@ function generateQuiz() {
 
   // genera il codice HTML per la domanda e le risposte e il timer
   const quiz = `
+
+  <div id="countdown">
+  <div id="countdown-number"></div>
+  <svg>
+    <circle r="18" cx="20" cy="20"></circle>
+  </svg>
+</div>
       <h2>${question}</h2>
-      <div id="timer"></div>
-  <div id="progress-bar-container">
-    <div id="progress-bar"></div>
-  </div>
       <form>
-      ${answers.map(
-        (answer) => `
-            <label>
-              <input type="radio" name="question${currentQuestion}" value="${answer}" required>
+      ${answers
+        .map(
+          (answer) => `
+            <label><div class="radio">
+              <input type="radio" name="question${currentQuestion}" value="${answer}" " >
               ${answer}
+              </div>
             </label>
           `
-      )}
+        )
+        .join("")}
         <button type="submit" id="next">Invia</button>
       </form>
     `;
@@ -203,26 +209,48 @@ let interval;
 
 generateQuiz(); // mostra la prima domanda
 
-// Imposta il timer a 60 secondi
-timerTot = 10;
-let percentage;
+// // Imposta il timer a 60 secondi
+// timerTot = 50;
+// let percentage;
 
-timer = timerTot;
-interval = setInterval(function () {
-  timer--;
-  percentage = timer / timerTot;
-  percentage = document.getElementById("timer").innerText =
-    "Tempo rimanente: " + timer + " secondi";
+// timer = timerTot;
+// interval = setInterval(function () {
+//   timer--;
+//   percentage = timer / timerTot;
+//   percentage = document.getElementById("timer").innerText =
+//     "Tempo rimanente: " + timer + " secondi";
 
-  // Se il timer scade, invia la domanda , resetta il timer e passa alla prossima domanda
-  if (timer === 0) {
-    timer = timerTot;
+//   // Se il timer scade, invia la domanda , resetta il timer e passa alla prossima domanda
+//   if (timer === 0) {
+//     timer = timerTot;
+//     currentQuestion++;
+//     generateQuiz();
+//   }
+// }, 1000); // Aggiorna il timer ogni secondo
+
+let countdownNumberEl = document.getElementById("countdown-number");
+let countdown = 10;
+
+countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+
+setInterval(function () {
+  countdown = --countdown;
+  if (countdown === 0) {
+    countdown = 10;
     currentQuestion++;
     generateQuiz();
+    countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
   }
-}, 1000); // Aggiorna il timer ogni secondo
+  countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+}, 1000);
 
-// funzione per mostrare i risultati del quiz
+quizContainer.onclick = function (e) {
+  if (e.target.tagName === "INPUT") {
+    if (e.target.value !== questions[currentQuestion].correct_answer) {
+      e.target.parentElement.classList.toggle("red");
+    }
+  }
+};
 
 function showResults() {
   // recupera il numero totale di domande
@@ -239,7 +267,7 @@ function showResults() {
 
 quizContainer.addEventListener("submit", (event) => {
   event.preventDefault(); // impedisci il submit del form
-  timer = timerTot;
+  countdown = 10;
   // recupera la risposta selezionata dall'utente
   const selected = document.querySelector(
     `input[name=question${currentQuestion}]:checked`
@@ -249,6 +277,9 @@ quizContainer.addEventListener("submit", (event) => {
   // controlla se la risposta è corretta
   if (answer === questions[currentQuestion].correct_answer) {
     score++; // aumenta il punteggio di 1
+  } else {
+    //console.log(selected);
+    //selected.classList.add("red");
   }
 
   selected.checked = false; // deseleziona la risposta selezionata
