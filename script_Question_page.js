@@ -181,14 +181,16 @@ function generateQuiz() {
     <div id="progress-bar"></div>
   </div>
       <form>
-      ${answers.map(
-        (answer) => `
+      ${answers
+        .map(
+          (answer) => `
             <label>
-              <input type="radio" name="question${currentQuestion}" value="${answer}" required>
+              <input type="radio" name="question${currentQuestion}" value="${answer}" id="${answer}" required>
               ${answer}
             </label>
           `
-      )}
+        )
+        .join("")}
         <button type="submit" id="next">Invia</button>
       </form>
     `;
@@ -204,7 +206,7 @@ let interval;
 generateQuiz(); // mostra la prima domanda
 
 // Imposta il timer a 60 secondi
-timerTot = 10;
+timerTot = 50;
 let percentage;
 
 timer = timerTot;
@@ -249,6 +251,9 @@ quizContainer.addEventListener("submit", (event) => {
   // controlla se la risposta è corretta
   if (answer === questions[currentQuestion].correct_answer) {
     score++; // aumenta il punteggio di 1
+  } else {
+    const radioSelected = document.getElementById(`${answer}`);
+    radioSelected.checked.classList.add("red");
   }
 
   selected.checked = false; // deseleziona la risposta selezionata

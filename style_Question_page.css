@@ -32,3 +32,9 @@ button {
   background-color: #00bfff;
   transition: width 1s linear;
 }
+
+.red {
+  color: red;
+  background-color: #00bfff;
+  font-weight: 800;
+}
