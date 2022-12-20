@@ -187,9 +187,10 @@ function generateQuiz() {
       ${answers
         .map(
           (answer) => `
-            <label>
+            <label><div class="radio">
               <input type="radio" name="question${currentQuestion}" value="${answer}" " >
               ${answer}
+              </div>
             </label>
           `
         )
