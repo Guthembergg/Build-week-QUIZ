@@ -176,10 +176,12 @@ function generateQuiz() {
   // genera il codice HTML per la domanda e le risposte e il timer
   const quiz = `
       <h2>${question}</h2>
-      <div id="timer"></div>
-  <div id="progress-bar-container">
-    <div id="progress-bar"></div>
-  </div>
+      <div id="countdown">
+        <div id="countdown-number"></div>
+        <svg>
+          <circle r="18" cx="20" cy="20"></circle>
+        </svg>
+      </div>
       <form>
       ${answers
         .map(
@@ -205,24 +207,35 @@ let interval;
 
 generateQuiz(); // mostra la prima domanda
 
-// Imposta il timer a 60 secondi
-timerTot = 50;
-let percentage;
+// // Imposta il timer a 60 secondi
+// timerTot = 50;
+// let percentage;
 
-timer = timerTot;
-interval = setInterval(function () {
-  timer--;
-  percentage = timer / timerTot;
-  percentage = document.getElementById("timer").innerText =
-    "Tempo rimanente: " + timer + " secondi";
+// timer = timerTot;
+// interval = setInterval(function () {
+//   timer--;
+//   percentage = timer / timerTot;
+//   percentage = document.getElementById("timer").innerText =
+//     "Tempo rimanente: " + timer + " secondi";
 
-  // Se il timer scade, invia la domanda , resetta il timer e passa alla prossima domanda
-  if (timer === 0) {
-    timer = timerTot;
-    currentQuestion++;
-    generateQuiz();
-  }
-}, 1000); // Aggiorna il timer ogni secondo
+//   // Se il timer scade, invia la domanda , resetta il timer e passa alla prossima domanda
+//   if (timer === 0) {
+//     timer = timerTot;
+//     currentQuestion++;
+//     generateQuiz();
+//   }
+// }, 1000); // Aggiorna il timer ogni secondo
+
+let countdownNumberEl = document.getElementById("countdown-number");
+let countdown = 60;
+
+countdownNumberEl.innerText = `${countdown}`;
+
+setInterval(function () {
+  countdown = --countdown <= 0 ? 10 : countdown;
+
+  countdownNumberEl.innerText = `${countdown}`;
+}, 1000);
 
 quizContainer.onclick = function (e) {
   if (e.target.tagName === "INPUT") {
