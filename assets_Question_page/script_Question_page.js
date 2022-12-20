@@ -291,7 +291,8 @@ quizContainer.addEventListener("submit", (event) => {
   if (currentQuestion < questions.length) {
     generateQuiz(); // mostra la prossima domanda
   } else {
-    showResults(); // mostra i risultati del quiz
-    quizContainer.remove(); // elimina il quiz
+    window.location.href = "index_Results-Page.html";
+    //showResults(); // mostra i risultati del quiz
+    //quizContainer.remove(); // elimina il quiz
   }
 });
