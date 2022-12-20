@@ -1,0 +1,95 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.logo {
+  width: 150px;
+  margin-left: 150px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  background-image: url(/img\ WP/bg.jpg);
+  background-repeat: no-repeat;
+  height: 780px;
+}
+
+.text {
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 150px;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 70px;
+  line-height: 0.8;
+}
+
+.spanH1 {
+  font-size: 70px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 50px;
+}
+h3 {
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 150px;
+  margin-bottom: 1px;
+  color: #d20094;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.list {
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  margin-top: 3em;
+}
+
+.listSpan {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+}
+
+button {
+  width: 200px;
+  height: 55px;
+  margin-left: 10em;
+  color: black;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  background-color: #00ffff;
+  border: 1px solid #00ffff;
+  box-shadow: 1px 1px 10px 13px #00ffff8e;
+}
+
+.buttonLink {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.p2 {
+  font-size: 20px;
+}
+
+#checkboxWP {
+  margin-left: 150px;
+  margin-top: 105px;
+  width: 30px;
+}
+
+.labelWP {
+  font-size: 14px;
+  font-weight: 600;
+}
