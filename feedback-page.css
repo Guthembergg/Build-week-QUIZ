@@ -56,3 +56,15 @@ button{
     text-transform: uppercase;
     background-color: #00FFFF;
 }
+.star{
+    color: darkblue;
+    font-size: 42px;
+    margin-bottom: 5px;
+    margin-left: 2px;
+    cursor: pointer;
+}
+
+.selected{
+    background-image: url("/assets/star.svg");
+}
+
