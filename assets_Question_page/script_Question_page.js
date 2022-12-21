@@ -359,7 +359,7 @@ function generateQuiz(domande) {
       e.target.parentElement.classList.toggle("selected");
 
       if (e.target.value !== domande[currentQuestion].correct_answer) {
-        e.target.parentElement.classList.toggle("red");
+        e.target.parentElement.classList.add("red");
       }
     }
   };
@@ -394,7 +394,7 @@ function generateQuiz(domande) {
       // mostra la prossima domanda
     } else {
       alert(score);
-      window.location.href = "index_Results-Page.html";
+      window.location.href = "/Results-Page/index.html";
       sessionStorage.setItem("score", score);
       sessionStorage.setItem("numeroDomande", domande.length);
     }
