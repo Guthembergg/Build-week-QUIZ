@@ -5,7 +5,7 @@
 }
 
 .logo {
-  width: 180px;
+  width: 130px;
   margin-left: 250px;
   margin-top: 40px;
   margin-bottom: 20px;
@@ -20,13 +20,12 @@
 
 .text {
   text-align: left;
-  font-family: Arial, Helvetica, sans-serif;
   margin-left: 250px;
   font-weight: 400;
 }
 
 h1 {
-  font-size: 90px;
+  font-size: 80px;
   line-height: 0.8;
 }
 
@@ -40,7 +39,6 @@ h2 {
 }
 h3 {
   text-align: left;
-  font-family: Arial, Helvetica, sans-serif;
   margin-left: 250px;
   margin-bottom: 1px;
   color: #d20094;
@@ -50,24 +48,22 @@ h3 {
 
 .list {
   text-align: left;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 23px;
   line-height: 1.5;
   margin-top: 3em;
 }
 
 .listSpan {
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: 600;
 }
 
 button {
   width: 220px;
   height: 65px;
-  margin-left: 22em;
+  margin-left: 45em;
+  margin-top: 20px;
   color: black;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
   font-size: 20px;
   background-color: #00ffff;
@@ -91,7 +87,6 @@ button:active {
   text-decoration: none;
   color: black;
   font-weight: 700;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .p2 {
@@ -100,7 +95,8 @@ button:active {
 
 #checkboxWP {
   margin-left: 250px;
-  margin-top: 135px;
+  margin-top: 80px;
+  margin-bottom: 0;
   top: 0;
   left: 0;
   height: 25px;

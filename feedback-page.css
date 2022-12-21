@@ -52,9 +52,24 @@ button {
   margin-top: 50px;
   color: darkblue;
   font-size: 20px;
+  font-weight: bold;
   text-transform: uppercase;
   background-color: #00ffff;
+  border: 1px solid #00ffff;
+  box-shadow: 1px 1px 10px 13px #00ffff;
+  -webkit-box-shadow: 4px -3px 54px -2px #00ffff;
+  -moz-box-shadow: 4px -3px 54px -2px #00ffff;
+  -o-box-shadow: 4px -3px 54px -2px #00ffff;
 }
+button:active {
+  border: 3px solid #00ffff;
+  color: #00ffff;
+  box-shadow: 1px 1px 10px 13px #00ffff;
+  -webkit-box-shadow: 4px -3px 54px -2px #00ffff;
+  -moz-box-shadow: 4px -3px 54px -2px #00ffff;
+  -o-box-shadow: 4px -3px 54px -2px #00ffff;
+}
+
 .star {
   color: darkblue;
   font-size: 42px;
@@ -64,5 +79,5 @@ button {
 }
 
 .selected {
-  background-image: url("/assets/star.svg");
+  color: #00ffff;
 }
