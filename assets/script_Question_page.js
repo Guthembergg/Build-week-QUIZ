@@ -231,24 +231,24 @@ generateQuiz(); // mostra la prima domanda
 let countdownNumberEl = document.getElementById("countdown-number");
 let countdown = 10;
 
-countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+//countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
 
 setInterval(function () {
   countdown = --countdown;
   if (countdown === 0) {
-    if (currentQuestion < questions.length) {
+    if (currentQuestion < questions.length - 1) {
       countdown = 10;
-
       currentQuestion++;
       generateQuiz();
       //countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
     } else {
-      alert("end");
-      showResults(); // mostra i risultati del quiz
-      quizContainer.remove(); // elimina il quiz
+      window.location.href = "index_Results-Page.html";
+
+      //showResults(); // mostra i risultati del quiz
+      //quizContainer.remove(); // elimina il quiz
     }
   }
-  countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+  //ScountdownNumberEl.innerText = `Seconds ${countdown} remaining`;
 }, 1000);
 
 quizContainer.onclick = function (e) {
