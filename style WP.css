@@ -1,11 +1,12 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 23px;
   color: white;
 }
 
 .logo {
-  width: 150px;
-  margin-left: 150px;
+  width: 180px;
+  margin-left: 250px;
   margin-top: 40px;
   margin-bottom: 20px;
 }
@@ -13,23 +14,24 @@
 .image-container {
   background-image: url(/img\ WP/bg.jpg);
   background-repeat: no-repeat;
-  height: 780px;
+  background-size: cover;
+  height: 40em;
 }
 
 .text {
   text-align: left;
   font-family: Arial, Helvetica, sans-serif;
-  margin-left: 150px;
+  margin-left: 250px;
   font-weight: 400;
 }
 
 h1 {
-  font-size: 70px;
+  font-size: 90px;
   line-height: 0.8;
 }
 
 .spanH1 {
-  font-size: 70px;
+  font-size: 90px;
   font-weight: 700;
 }
 
@@ -39,7 +41,7 @@ h2 {
 h3 {
   text-align: left;
   font-family: Arial, Helvetica, sans-serif;
-  margin-left: 150px;
+  margin-left: 250px;
   margin-bottom: 1px;
   color: #d20094;
   font-size: 30px;
@@ -49,6 +51,7 @@ h3 {
 .list {
   text-align: left;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 23px;
   line-height: 1.5;
   margin-top: 3em;
 }
@@ -59,17 +62,29 @@ h3 {
 }
 
 button {
-  width: 200px;
-  height: 55px;
-  margin-left: 10em;
+  width: 220px;
+  height: 65px;
+  margin-left: 22em;
   color: black;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 20px;
   background-color: #00ffff;
   border: 1px solid #00ffff;
-  box-shadow: 1px 1px 10px 13px #00ffff8e;
+  box-shadow: 1px 1px 10px 13px #00ffff;
+  -webkit-box-shadow: 4px -3px 54px -2px #00ffff;
+  -moz-box-shadow: 4px -3px 54px -2px #00ffff;
+  -o-box-shadow: 4px -3px 54px -2px #00ffff;
+}
+
+button:active {
+  border: 3px solid #00ffff;
+  color: #00ffff;
+  box-shadow: 1px 1px 10px 13px #00ffff;
+  -webkit-box-shadow: 4px -3px 54px -2px #00ffff;
+  -moz-box-shadow: 4px -3px 54px -2px #00ffff;
+  -o-box-shadow: 4px -3px 54px -2px #00ffff;
 }
 
 .buttonLink {
@@ -84,12 +99,26 @@ button {
 }
 
 #checkboxWP {
-  margin-left: 150px;
-  margin-top: 105px;
-  width: 30px;
+  margin-left: 250px;
+  margin-top: 135px;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border: 2px solid white;
+  appearance: none;
+}
+
+#checkboxWP:checked {
+  background-color: #00ffff;
+  border: 1px solid #00ffff;
+  box-shadow: 1px 1px 10px 13px #00ffff;
+  -webkit-box-shadow: 4px -3px 54px -2px #00ffff;
+  -moz-box-shadow: 4px -3px 54px -2px #00ffff;
+  -o-box-shadow: 4px -3px 54px -2px #00ffff;
 }
 
 .labelWP {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 600;
 }
