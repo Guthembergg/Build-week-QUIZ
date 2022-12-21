@@ -242,6 +242,7 @@ setInterval(function () {
       generateQuiz();
       //countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
     } else {
+      alert(score);
       window.location.href = "index_Results-Page.html";
 
       //showResults(); // mostra i risultati del quiz
@@ -298,5 +299,7 @@ quizContainer.addEventListener("submit", (event) => {
   if (currentQuestion < questions.length) {
     generateQuiz(); // mostra la prossima domanda
   } else {
+    alert(score);
+    window.location.href = "index_Results-Page.html";
   }
 });
