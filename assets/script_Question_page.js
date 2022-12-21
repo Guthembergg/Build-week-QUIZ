@@ -244,6 +244,8 @@ setInterval(function () {
     } else {
       alert(score);
       window.location.href = "index_Results-Page.html";
+      sessionStorage.setItem("score", score);
+      sessionStorage.setItem("numeroDomande", questions.length);
 
       //showResults(); // mostra i risultati del quiz
       //quizContainer.remove(); // elimina il quiz
@@ -301,5 +303,10 @@ quizContainer.addEventListener("submit", (event) => {
   } else {
     alert(score);
     window.location.href = "index_Results-Page.html";
+    sessionStorage.setItem("score", score);
+    sessionStorage.setItem("numeroDomande", questions.length);
   }
 });
+
+// let score = sessionStorage.getItem("score");
+// let numeroDomande = sessionStorage.getItem("numeroDomande");
