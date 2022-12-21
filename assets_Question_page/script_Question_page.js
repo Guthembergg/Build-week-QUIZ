@@ -367,80 +367,6 @@ function generateQuiz(domande) {
   quizContainer.addEventListener("submit", (event) => {
     event.preventDefault(); // impedisci il submit del form
 
-<<<<<<<< HEAD:assets_Question_page/script_Question_page.js
-// // Imposta il timer a 60 secondi
-// timerTot = 50;
-// let percentage;
-
-// timer = timerTot;
-// interval = setInterval(function () {
-//   timer--;
-//   percentage = timer / timerTot;
-//   percentage = document.getElementById("timer").innerText =
-//     "Tempo rimanente: " + timer + " secondi";
-
-//   // Se il timer scade, invia la domanda , resetta il timer e passa alla prossima domanda
-//   if (timer === 0) {
-//     timer = timerTot;
-//     currentQuestion++;
-//     generateQuiz();
-//   }
-// }, 1000); // Aggiorna il timer ogni secondo
-
-let countdownNumberEl = document.getElementById("countdown-number");
-let countdown = 10;
-
-countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
-
-setInterval(function () {
-  countdown = --countdown;
-  if (countdown === 0) {
-    countdown = 10;
-    currentQuestion++;
-    generateQuiz();
-    countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
-  }
-  countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
-}, 1000);
-
-quizContainer.onclick = function (e) {
-  if (e.target.tagName === "INPUT") {
-    if (e.target.value !== questions[currentQuestion].correct_answer) {
-      e.target.parentElement.classList.toggle("red");
-    }
-  }
-};
-
-function showResults() {
-  // recupera il numero totale di domande
-  const totalQuestions = questions.length;
-
-  // genera il codice HTML per i risultati
-  const results = `
-        <h2>Hai completato il quiz!</h2>
-        <h3>Il tuo punteggio: ${score} / ${totalQuestions}</h3>
-      `;
-
-  resultsContainer.innerHTML = results; // inserisci il codice HTML nel container dei risultati
-}
-
-quizContainer.addEventListener("submit", (event) => {
-  event.preventDefault(); // impedisci il submit del form
-  countdown = 10;
-  // recupera la risposta selezionata dall'utente
-  const selected = document.querySelector(
-    `input[name=question${currentQuestion}]:checked`
-  );
-  const answer = selected.value;
-
-  // controlla se la risposta è corretta
-  if (answer === questions[currentQuestion].correct_answer) {
-    score++; // aumenta il punteggio di 1
-  } else {
-    //console.log(selected);
-    //selected.classList.add("red");
-  }
-========
     // recupera la risposta selezionata dall'utente
     const selected = document.querySelector(
       `input[name=question${currentQuestion}]:checked`
@@ -478,7 +404,6 @@ quizContainer.addEventListener("submit", (event) => {
 //generateQuiz(); // mostra la prima domanda
 
 //const progressBar = document.getElementById("progress-bar"); // seleziona l'elemento HTML con l'ID "progress-bar"
->>>>>>>> Feature/Question_page:assets/script_Question_page.js
 
 // function showResults() {
 //   // recupera il numero totale di domande
@@ -490,17 +415,6 @@ quizContainer.addEventListener("submit", (event) => {
 //         <h3>Il tuo punteggio: ${score} / ${totalQuestions}</h3>
 //       `;
 
-<<<<<<<< HEAD:assets_Question_page/script_Question_page.js
-  // controlla se ci sono ancora domande da mostrare
-  if (currentQuestion < questions.length) {
-    generateQuiz(); // mostra la prossima domanda
-  } else {
-    window.location.href = "index_Results-Page.html";
-    //showResults(); // mostra i risultati del quiz
-    //quizContainer.remove(); // elimina il quiz
-  }
-});
-========
 //   resultsContainer.innerHTML = results; // inserisci il codice HTML nel container dei risultati
 // }
 
@@ -508,4 +422,3 @@ quizContainer.addEventListener("submit", (event) => {
 
 // let score = sessionStorage.getItem("score");
 // let numeroDomande = sessionStorage.getItem("numeroDomande");
->>>>>>>> Feature/Question_page:assets/script_Question_page.js
