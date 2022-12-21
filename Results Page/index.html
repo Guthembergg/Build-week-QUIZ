@@ -14,6 +14,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-image: url(bg.jpg);
+            height: 65em;
 
 
         }
@@ -21,7 +22,16 @@
         h1{
             text-align: center;
             color: #fff;
+            margin-bottom: 0em;
+            font-weight: 700;
+        }
+
+
+        h3{
+            text-align: center;
+            color: #fff;
             margin-bottom: 2em;
+            font-weight: 400;
         }
 
         img {
@@ -31,8 +41,30 @@
         }
 
         canvas{
-            margin-bottom: 6em;
+            margin-bottom: 3.9em;
         }
+
+        a:hover {
+  border:3px solid #D20094;
+  color: #D20094;
+  -webkit-box-shadow: -1px -12px 34px 9px #D20094;
+-moz-box-shadow: -1px -12px 34px 9px #D20094;
+-o-box-shadow: -1px -12px 34px 9px #D20094;
+box-shadow: -1px -12px 34px 9px #D20094;
+
+  
+}
+
+a:active {
+    border:3px solid #00ffff;
+  color: #00ffff;
+
+    
+    -webkit-box-shadow: -1px -12px 34px 9px #00FFFF;
+-moz-box-shadow: -1px -12px 34px 9px #00FFFF;
+-o-box-shadow: -1px -12px 34px 9px #00FFFF;
+box-shadow: -1px -12px 34px 9px #00FFFF;
+}
 
 
         a {font-size: 30px;
@@ -42,9 +74,14 @@
     padding: 0.5em 2em 0.5em 2em;
     font-weight: 800;
     margin: 0 auto 0 auto;
-    margin-left: 20.8em;
+    margin-left: 21.3em;
+    margin-bottom: 2em;
 
 }
+
+
+
+
 
     </style>
 </head>
@@ -53,99 +90,122 @@
     <img src="epicode_logo.png" alt="logo">
 </figure>
     <h1>Results</h1>
+    <h3>The summary of your answers is: </h3>
     <div class="container">
         <canvas id="myChart" ></canvas>
     </div>
 
 
-    <a href="feedback-page.html">RATE US</a>
+    <a href="feedback-page.html" target="_blank">RATE US</a>
 
 
 
 
-    <script>
-
-
-
-
-
-Chart.pluginService.register({
-  beforeDraw: function(chart) {
-    let width = chart.chart.width,
-        height = chart.chart.height,
-        ctx = chart.chart.ctx;
-
-    ctx.restore();
-    let fontSize = (height / 114).toFixed(2);
-    ctx.font = fontSize + "em sans-serif" ;
-    ctx.textBaseline = "middle";
-    ctx.fontColor = '#fff'
-
-    let text = "Passing",
-        textX = Math.round((width - ctx.measureText(text).width) / 2),
-        textY = height / 2;
-
-    ctx.fillText(text, textX, textY);
-    ctx.save();
-  }
-});
-
-
-
-
-        let myChart = document.getElementById("myChart").getContext("2d")
-
-        //  Chart.defaults.global.defaultFontFamily = 'Arial'
-        //  Chart.defaults.global.defaultFontSize = '18px'
-        //  Chart.defaults.global.defaultFontColor = '#000'
-
-
-        let doughnutChart = new Chart(myChart, {
-            type: "doughnut",
-            data: {
-                labels: ['Correct Answers', 'Wrong Answers'],
-                datasets: [{
-                    label: ['Correct Answers', 'Wrong Answers'], 
-                    data: [
-                        20,
-                        10
-                    ],
-                    backgroundColor: [ '#00FFFF', '#D20094'],
-                    borderWidth: 2,
-                    borderColor: '#777',
-                    hoverBorderWidth: 3,
-                    hoverBorderColor: '#777a',
-
-
-
-            
-
-                }
-                ]
-            },
-            options: {            cutoutPercentage: 65,
-                                  rotation: Math.PI * 1.5,
-                                  title:{
-                                    display: true,
-                                    fontSize: 26,
-                                    fontColor: '#fff',
-                                    text : 'The summary of your answers is: '
-                                  },
-                                  legend:{
-                                    display: false,
-
-                                  },
-                                  tooltips:{
-                                    enabled: true
-                                  }
-
-},
-// plugins: [textCenterDoughnut]
-
-        })
-
-
-
-    </script>
 </body>
+
+
+<script>
+
+// let score = sessionStorage.getItem("score")
+
+// let numeroDomande = sessionStorage.getItem("numeroDomande")
+
+let score = 20
+
+let numeroDomande = 30
+
+let wrongAnswers = numeroDomande - score 
+
+
+
+    Chart.pluginService.register({
+      beforeDraw: function(chart) {
+        let width = chart.chart.width,
+            height = chart.chart.height,
+            ctx = chart.chart.ctx;
+    
+        ctx.restore();
+        let fontSize = (height / 114).toFixed(2);
+        ctx.font = fontSize + "em sans-serif" ;
+        ctx.textBaseline = "middle";
+        ctx.fontColor = '#fff'
+
+
+         
+
+
+            let text = 'Passing',
+            textX = Math.round((width - ctx.measureText(text).width) / 2),
+            textY = height / 2;
+
+            let text1 = 'Rejected',
+            text1X = Math.round((width - ctx.measureText(text1).width) / 2),
+            text1Y = height / 2;
+
+
+    
+        if(score>=18){ctx.fillText(text, textX, textY)};
+        if(score<18){ctx.fillText(text1, text1X, text1Y)};
+        
+        ctx.save();
+      }
+    });
+    
+    
+    
+    
+            let myChart = document.getElementById("myChart").getContext("2d")
+    
+            //  Chart.defaults.global.defaultFontFamily = 'Arial'
+            //  Chart.defaults.global.defaultFontSize = '18px'
+            //  Chart.defaults.global.defaultFontColor = '#000'
+    
+    
+            let doughnutChart = new Chart(myChart, {
+                type: "doughnut",
+                data: {
+                    labels: ['Correct Answers', 'Wrong Answers'],
+                    datasets: [{
+                        label: ['Correct Answers', 'Wrong Answers'], 
+                        data: [
+                            score,
+                            wrongAnswers
+                        ],
+                        backgroundColor: [ '#00FFFF', '#D20094'],
+                        borderWidth: 2,
+                        borderColor: '#777',
+                        hoverBorderWidth: 3,
+                        hoverBorderColor: '#777a',
+    
+    
+    
+                
+    
+                    }
+                    ]
+                },
+                options: {            cutoutPercentage: 65,
+                                      rotation: Math.PI * 1.5,
+                                    //   title:{
+                                    //     display: true,
+                                    //     fontSize: 26,
+                                    //     fontColor: '#fff',
+                                    //     text : 'The summary of your answers is: '
+                                    //   },
+                                      legend:{
+                                        display: false,
+    
+                                      },
+                                      tooltips:{
+                                        enabled: true
+                                      }
+    
+    },
+    
+    
+            })
+    
+    
+    
+        </script>
 </html>
