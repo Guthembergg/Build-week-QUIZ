@@ -155,15 +155,133 @@ const questions = [
   },
 ];
 
+const questions2 = [
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "hard",
+    question:
+      "The Harvard architecture for micro-controllers added which additional bus?",
+    correct_answer: "Instruction",
+    incorrect_answers: ["Address", "Data", "Control"],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "hard",
+    question: "How many Hz does the video standard PAL support?",
+    correct_answer: "50",
+    incorrect_answers: ["59", "60", "25"],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "hard",
+    question:
+      "The internet domain .fm is the country-code top-level domain for which Pacific Ocean island nation?",
+    correct_answer: "Micronesia",
+    incorrect_answers: ["Fiji", "Tuvalu", "Marshall Islands"],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "hard",
+    question: "What port does HTTP run on?",
+    correct_answer: "80",
+    incorrect_answers: ["53", "443", "23"],
+  },
+  {
+    category: "Science: Computers",
+    type: "boolean",
+    difficulty: "hard",
+    question: "DHCP stands for Dynamic Host Configuration Port.",
+    correct_answer: "False",
+    incorrect_answers: ["True"],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "hard",
+    question:
+      "America Online (AOL) started out as which of these online service providers?",
+    correct_answer: "Quantum Link",
+    incorrect_answers: ["CompuServe", "Prodigy", "GEnie"],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "hard",
+    question:
+      "According to DeMorgan&#039;s Theorem, the Boolean expression (AB)&#039; is equivalent to:",
+    correct_answer: "A&#039; + B&#039;",
+    incorrect_answers: [
+      "A&#039;B + B&#039;A",
+      "A&#039;B&#039;",
+      "AB&#039; + AB",
+    ],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "hard",
+    question: "What major programming language does Unreal Engine 4 use?",
+    correct_answer: "C++",
+    incorrect_answers: ["Assembly", "C#", "ECMAScript"],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "hard",
+    question:
+      "Which of these is not a layer in the OSI model for data communications?",
+    correct_answer: "Connection Layer",
+    incorrect_answers: [
+      "Application Layer",
+      "Transport Layer",
+      "Physical Layer",
+    ],
+  },
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "hard",
+    question: "Who is the founder of Palantir?",
+    correct_answer: "Peter Thiel",
+    incorrect_answers: ["Mark Zuckerberg", "Marc Benioff", "Jack Dorsey"],
+  },
+];
+
 const quizContainer = document.getElementById("quiz");
 const resultsContainer = document.getElementById("results");
 const submitButton = document.getElementById("next");
+const difficulty = document.getElementById("difficulty");
+
+const hardness = `<h2> Select Difficulty</h2><button id="hard" value="hard">Hard</div><button id="easy" value="easy">Easy</div>
+`;
+difficulty.innerHTML = hardness;
+difficulty.onclick = function (e) {
+  let diff = e.target.value;
+  let body = document.querySelector("body");
+  if (diff === "easy") {
+    body.removeChild(difficulty);
+    generateQuiz(1);
+  } else if (diff === "hard") {
+    body.removeChild(difficulty);
+    generateQuiz(2);
+  }
+};
 let currentQuestion = 0; // imposta il contatore delle domande a zero
-let score = 0; // imposta il punteggio a zero
+let score = 0;
+// imposta il punteggio a zero
 
 // funzione per generare il quiz
-function generateQuiz() {
-  const currentQuestionObject = questions[currentQuestion];
+function generateQuiz(domande) {
+  if (domande === 1) {
+    domande = questions;
+  } else if (domande === 2) {
+    domande = questions2;
+  }
+  const currentQuestionObject = domande[currentQuestion];
 
   // recupera la domanda e le possibili risposte
   const question = currentQuestionObject.question;
@@ -200,71 +318,104 @@ function generateQuiz() {
     `;
 
   quizContainer.innerHTML = quiz; // inserisci il codice HTML nel container del quiz
-}
 
-const progressBar = document.getElementById("progress-bar"); // seleziona l'elemento HTML con l'ID "progress-bar"
+  let timer;
+  let interval;
 
-let timer;
-let interval;
+  // // Imposta il timer a 60 secondi
+  // timerTot = 50;
+  // let percentage;
 
-generateQuiz(); // mostra la prima domanda
+  // timer = timerTot;
+  // interval = setInterval(function () {
+  //   timer--;
+  //   percentage = timer / timerTot;
+  //   percentage = document.getElementById("timer").innerText =
+  //     "Tempo rimanente: " + timer + " secondi";
 
-// // Imposta il timer a 60 secondi
-// timerTot = 50;
-// let percentage;
+  //   // Se il timer scade, invia la domanda , resetta il timer e passa alla prossima domanda
+  //   if (timer === 0) {
+  //     timer = timerTot;
+  //     currentQuestion++;
+  //     generateQuiz();
+  //   }
+  // }, 1000); // Aggiorna il timer ogni secondo
 
-// timer = timerTot;
-// interval = setInterval(function () {
-//   timer--;
-//   percentage = timer / timerTot;
-//   percentage = document.getElementById("timer").innerText =
-//     "Tempo rimanente: " + timer + " secondi";
+  let countdownNumberEl = document.getElementById("countdown-number");
+  let countdown = 10;
 
-//   // Se il timer scade, invia la domanda , resetta il timer e passa alla prossima domanda
-//   if (timer === 0) {
-//     timer = timerTot;
-//     currentQuestion++;
-//     generateQuiz();
-//   }
-// }, 1000); // Aggiorna il timer ogni secondo
+  //countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
 
-let countdownNumberEl = document.getElementById("countdown-number");
-let countdown = 10;
+  setInterval(function () {
+    countdown = --countdown;
+    if (countdown === 0) {
+      if (currentQuestion < domande.length - 1) {
+        countdown = 10;
+        currentQuestion++;
+        generateQuiz(domande);
+        //countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+      } else if (currentQuestion >= domande.length - 1) {
+        //alert(score);
+        window.location.href = "index_Results-Page.html";
+        sessionStorage.setItem("score", score);
+        sessionStorage.setItem("numeroDomande", domande.length);
 
-//countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+        //showResults(); // mostra i risultati del quiz
+        //quizContainer.remove(); // elimina il quiz
+      }
+    }
+    //ScountdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+  }, 1000);
 
-setInterval(function () {
-  countdown = --countdown;
-  if (countdown === 0) {
-    if (currentQuestion < questions.length - 1) {
-      countdown = 10;
-      currentQuestion++;
-      generateQuiz();
-      //countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+  quizContainer.onclick = function (e) {
+    if (e.target.tagName === "INPUT") {
+      if (e.target.value !== domande[currentQuestion].correct_answer) {
+        e.target.parentElement.classList.toggle("red");
+      }
+    }
+  };
+
+  quizContainer.addEventListener("submit", (event) => {
+    event.preventDefault(); // impedisci il submit del form
+    countdown = 10;
+    // recupera la risposta selezionata dall'utente
+    const selected = document.querySelector(
+      `input[name=question${currentQuestion}]:checked`
+    );
+    const answer = selected.value;
+
+    // controlla se la risposta è corretta
+    if (answer === domande[currentQuestion].correct_answer) {
+      score++; // aumenta il punteggio di 1
+    } else {
+      //console.log(selected);
+      //selected.classList.add("red");
+    }
+
+    selected.checked = false; // deseleziona la risposta selezionata
+
+    // vai alla prossima domanda
+    currentQuestion++;
+
+    // controlla se ci sono ancora domande da mostrare
+    if (currentQuestion < domande.length) {
+      generateQuiz(domande); // mostra la prossima domanda
     } else {
       alert(score);
       window.location.href = "index_Results-Page.html";
       sessionStorage.setItem("score", score);
-      sessionStorage.setItem("numeroDomande", questions.length);
-
-      //showResults(); // mostra i risultati del quiz
-      //quizContainer.remove(); // elimina il quiz
+      sessionStorage.setItem("numeroDomande", domande.length);
     }
-  }
-  //ScountdownNumberEl.innerText = `Seconds ${countdown} remaining`;
-}, 1000);
+  });
+}
 
-quizContainer.onclick = function (e) {
-  if (e.target.tagName === "INPUT") {
-    if (e.target.value !== questions[currentQuestion].correct_answer) {
-      e.target.parentElement.classList.toggle("red");
-    }
-  }
-};
+//generateQuiz(); // mostra la prima domanda
+
+//const progressBar = document.getElementById("progress-bar"); // seleziona l'elemento HTML con l'ID "progress-bar"
 
 function showResults() {
   // recupera il numero totale di domande
-  const totalQuestions = questions.length;
+  const totalQuestions = domande.length;
 
   // genera il codice HTML per i risultati
   const results = `
@@ -274,39 +425,6 @@ function showResults() {
 
   resultsContainer.innerHTML = results; // inserisci il codice HTML nel container dei risultati
 }
-
-quizContainer.addEventListener("submit", (event) => {
-  event.preventDefault(); // impedisci il submit del form
-  countdown = 10;
-  // recupera la risposta selezionata dall'utente
-  const selected = document.querySelector(
-    `input[name=question${currentQuestion}]:checked`
-  );
-  const answer = selected.value;
-
-  // controlla se la risposta è corretta
-  if (answer === questions[currentQuestion].correct_answer) {
-    score++; // aumenta il punteggio di 1
-  } else {
-    //console.log(selected);
-    //selected.classList.add("red");
-  }
-
-  selected.checked = false; // deseleziona la risposta selezionata
-
-  // vai alla prossima domanda
-  currentQuestion++;
-
-  // controlla se ci sono ancora domande da mostrare
-  if (currentQuestion < questions.length) {
-    generateQuiz(); // mostra la prossima domanda
-  } else {
-    alert(score);
-    window.location.href = "index_Results-Page.html";
-    sessionStorage.setItem("score", score);
-    sessionStorage.setItem("numeroDomande", questions.length);
-  }
-});
 
 //per passare le variabili a results page si fa cosi:
 
