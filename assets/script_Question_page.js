@@ -236,10 +236,17 @@ countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
 setInterval(function () {
   countdown = --countdown;
   if (countdown === 0) {
-    countdown = 10;
-    currentQuestion++;
-    generateQuiz();
-    countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+    if (currentQuestion < questions.length) {
+      countdown = 10;
+
+      currentQuestion++;
+      generateQuiz();
+      //countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+    } else {
+      alert("end");
+      showResults(); // mostra i risultati del quiz
+      quizContainer.remove(); // elimina il quiz
+    }
   }
   countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
 }, 1000);
@@ -291,7 +298,5 @@ quizContainer.addEventListener("submit", (event) => {
   if (currentQuestion < questions.length) {
     generateQuiz(); // mostra la prossima domanda
   } else {
-    showResults(); // mostra i risultati del quiz
-    quizContainer.remove(); // elimina il quiz
   }
 });
