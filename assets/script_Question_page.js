@@ -308,5 +308,7 @@ quizContainer.addEventListener("submit", (event) => {
   }
 });
 
+//per passare le variabili a results page si fa cosi:
+
 // let score = sessionStorage.getItem("score");
 // let numeroDomande = sessionStorage.getItem("numeroDomande");
