@@ -256,7 +256,7 @@ const resultsContainer = document.getElementById("results");
 const submitButton = document.getElementById("next");
 const difficulty = document.getElementById("difficulty");
 
-const hardness = `<h2> Select Difficulty</h2><button id="hard" value="hard">Hard</div><button id="easy" value="easy">Easy</div>
+const hardness = `<h2> Select Difficulty:</h2><button id="hard" value="hard">Hard</div><button id="hard" value="easy">Easy</div>
 `;
 difficulty.innerHTML = hardness;
 difficulty.onclick = function (e) {
@@ -350,9 +350,14 @@ function generateQuiz(domande) {
   quizContainer.innerHTML = quiz; // inserisci il codice HTML nel container del quiz
 
   //countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
-
+  let elemento;
   quizContainer.onclick = function (e) {
     if (e.target.tagName === "INPUT") {
+      if ((elemento = document.querySelector(".selected"))) {
+        elemento.classList.remove("selected");
+      }
+      e.target.parentElement.classList.toggle("selected");
+
       if (e.target.value !== domande[currentQuestion].correct_answer) {
         e.target.parentElement.classList.toggle("red");
       }
@@ -366,6 +371,7 @@ function generateQuiz(domande) {
     const selected = document.querySelector(
       `input[name=question${currentQuestion}]:checked`
     );
+    // const selected = document.querySelector(".selected");
     const answer = selected.value;
 
     // controlla se la risposta è corretta

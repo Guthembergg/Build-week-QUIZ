@@ -18,14 +18,21 @@ h3 {
   color: rgb(176, 50, 204);
   font-size: 30px;
 }
+
 .radio {
   padding: 2%;
   display: inline-block;
   border: 1px solid rgba(84, 84, 84, 0.313);
   border-radius: 10px;
 }
+input[type="radio"] {
+  opacity: 0;
+}
 .radio:hover {
-  background-color: rgba(153, 50, 204, 0.387);
+  background-color: rgba(106, 5, 157, 0.192);
+}
+.selected {
+  background-color: rgba(0, 234, 255, 0.381);
 }
 button {
   margin-left: 5%;
@@ -95,4 +102,10 @@ svg circle {
   to {
     stroke-dashoffset: 113px;
   }
+}
+
+#hard {
+  width: 25%;
+  margin-top: 5%;
+  font-size: 30px;
 }
