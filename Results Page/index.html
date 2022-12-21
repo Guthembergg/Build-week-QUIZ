@@ -42,6 +42,7 @@
 
         canvas{
             margin-bottom: 3.9em;
+            color: white;
         }
 
         a:hover {
@@ -106,13 +107,13 @@ box-shadow: -1px -12px 34px 9px #00FFFF;
 
 <script>
 
-// let score = sessionStorage.getItem("score")
+let score = sessionStorage.getItem("score")
 
-// let numeroDomande = sessionStorage.getItem("numeroDomande")
+let numeroDomande = sessionStorage.getItem("numeroDomande")
 
-let score = 20
+// let score = 15
 
-let numeroDomande = 30
+// let numeroDomande = 30
 
 let wrongAnswers = numeroDomande - score 
 
@@ -144,8 +145,8 @@ let wrongAnswers = numeroDomande - score
 
 
     
-        if(score>=18){ctx.fillText(text, textX, textY)};
-        if(score<18){ctx.fillText(text1, text1X, text1Y)};
+        if(score / numeroDomande >= 0.6){ctx.fillText(text, textX, textY)};
+        if(score / numeroDomande < 0.6){ctx.fillText(text1, text1X, text1Y)};
         
         ctx.save();
       }
