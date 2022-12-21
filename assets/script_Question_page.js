@@ -261,21 +261,51 @@ const hardness = `<h2> Select Difficulty</h2><button id="hard" value="hard">Hard
 difficulty.innerHTML = hardness;
 difficulty.onclick = function (e) {
   let diff = e.target.value;
+  let domande2;
   let body = document.querySelector("body");
   if (diff === "easy") {
     body.removeChild(difficulty);
     generateQuiz(1);
+    domande2 = questions;
   } else if (diff === "hard") {
     body.removeChild(difficulty);
     generateQuiz(2);
+    domande2 = questions2;
   }
+  setInterval(
+    function () {
+      //countdown = Tempo;
+
+      countdown--;
+      if (countdown === 0 && currentQuestion < domande2.length - 1) {
+        currentQuestion++;
+        generateQuiz(domande2);
+        //countdown = Tempo;
+
+        //countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+      }
+      if (currentQuestion >= domande2.length - 1 && countdown === 0) {
+        window.location.href = "index_Results-Page.html";
+        sessionStorage.setItem("score", score);
+        sessionStorage.setItem("numeroDomande", domande.length);
+
+        //showResults(); // mostra i risultati del quiz
+        //quizContainer.remove(); // elimina il quiz
+      }
+    },
+    //ScountdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+    1000
+  );
 };
 let currentQuestion = 0; // imposta il contatore delle domande a zero
 let score = 0;
+let Tempo = 10;
+let countdown = 10;
 // imposta il punteggio a zero
 
 // funzione per generare il quiz
 function generateQuiz(domande) {
+  countdown = Tempo;
   if (domande === 1) {
     domande = questions;
   } else if (domande === 2) {
@@ -319,53 +349,7 @@ function generateQuiz(domande) {
 
   quizContainer.innerHTML = quiz; // inserisci il codice HTML nel container del quiz
 
-  let timer;
-  let interval;
-
-  // // Imposta il timer a 60 secondi
-  // timerTot = 50;
-  // let percentage;
-
-  // timer = timerTot;
-  // interval = setInterval(function () {
-  //   timer--;
-  //   percentage = timer / timerTot;
-  //   percentage = document.getElementById("timer").innerText =
-  //     "Tempo rimanente: " + timer + " secondi";
-
-  //   // Se il timer scade, invia la domanda , resetta il timer e passa alla prossima domanda
-  //   if (timer === 0) {
-  //     timer = timerTot;
-  //     currentQuestion++;
-  //     generateQuiz();
-  //   }
-  // }, 1000); // Aggiorna il timer ogni secondo
-
-  let countdownNumberEl = document.getElementById("countdown-number");
-  let countdown = 10;
-
   //countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
-
-  setInterval(function () {
-    countdown = --countdown;
-    if (countdown === 0) {
-      if (currentQuestion < domande.length - 1) {
-        countdown = 10;
-        currentQuestion++;
-        generateQuiz(domande);
-        //countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
-      } else if (currentQuestion >= domande.length - 1) {
-        //alert(score);
-        window.location.href = "index_Results-Page.html";
-        sessionStorage.setItem("score", score);
-        sessionStorage.setItem("numeroDomande", domande.length);
-
-        //showResults(); // mostra i risultati del quiz
-        //quizContainer.remove(); // elimina il quiz
-      }
-    }
-    //ScountdownNumberEl.innerText = `Seconds ${countdown} remaining`;
-  }, 1000);
 
   quizContainer.onclick = function (e) {
     if (e.target.tagName === "INPUT") {
@@ -377,7 +361,7 @@ function generateQuiz(domande) {
 
   quizContainer.addEventListener("submit", (event) => {
     event.preventDefault(); // impedisci il submit del form
-    countdown = 10;
+
     // recupera la risposta selezionata dall'utente
     const selected = document.querySelector(
       `input[name=question${currentQuestion}]:checked`
@@ -396,10 +380,12 @@ function generateQuiz(domande) {
 
     // vai alla prossima domanda
     currentQuestion++;
+    countdown = 10;
 
     // controlla se ci sono ancora domande da mostrare
     if (currentQuestion < domande.length) {
-      generateQuiz(domande); // mostra la prossima domanda
+      generateQuiz(domande);
+      // mostra la prossima domanda
     } else {
       alert(score);
       window.location.href = "index_Results-Page.html";
@@ -413,18 +399,18 @@ function generateQuiz(domande) {
 
 //const progressBar = document.getElementById("progress-bar"); // seleziona l'elemento HTML con l'ID "progress-bar"
 
-function showResults() {
-  // recupera il numero totale di domande
-  const totalQuestions = domande.length;
+// function showResults() {
+//   // recupera il numero totale di domande
+//   const totalQuestions = domande.length;
 
-  // genera il codice HTML per i risultati
-  const results = `
-        <h2>Hai completato il quiz!</h2>
-        <h3>Il tuo punteggio: ${score} / ${totalQuestions}</h3>
-      `;
+//   // genera il codice HTML per i risultati
+//   const results = `
+//         <h2>Hai completato il quiz!</h2>
+//         <h3>Il tuo punteggio: ${score} / ${totalQuestions}</h3>
+//       `;
 
-  resultsContainer.innerHTML = results; // inserisci il codice HTML nel container dei risultati
-}
+//   resultsContainer.innerHTML = results; // inserisci il codice HTML nel container dei risultati
+// }
 
 //per passare le variabili a results page si fa cosi:
 
