@@ -24,6 +24,7 @@ h3 {
   display: inline-block;
   border: 1px solid rgba(84, 84, 84, 0.313);
   border-radius: 10px;
+  padding-right: 4%;
 }
 input[type="radio"] {
   opacity: 0;
@@ -51,7 +52,7 @@ button:hover {
 }
 
 body {
-  background-image: url("/assets/img/bg.jpg");
+  background-image: url("/assets_Question_page/img/bg.jpg");
   background-size: cover;
 }
 .red {
@@ -108,4 +109,32 @@ svg circle {
   width: 25%;
   margin-top: 5%;
   font-size: 30px;
+}
+
+h3 {
+  color: white;
+  font-size: 15px;
+  display: inline;
+  text-align: left;
+  padding-bottom: 1px;
+}
+h4 {
+  color: red;
+  font-size: 16px;
+  display: inline-block;
+  text-align: left;
+}
+h5 {
+  color: green;
+  font-size: 16px;
+  display: inline-block;
+  text-align: left;
+}
+
+.sbagliate {
+  padding-bottom: 5%;
+  font-family: Outfit;
+}
+#continua {
+  left: 50%;
 }
