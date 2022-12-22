@@ -23,8 +23,9 @@ h3 {
   padding: 2%;
   border: 1px solid rgba(84, 84, 84, 0.313);
   border-radius: 10px;
-
   padding-left: 0;
+  width: 30%;
+  margin-left: 30%;
 }
 input[type="radio"] {
   opacity: 0;
