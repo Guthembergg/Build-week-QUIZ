@@ -18,8 +18,8 @@ h3 {
   font-size: 30px;
 }
 button {
-  width: 200px;
-  height: 55px;
+  width: 220px;
+  height: 65px;
   display: block;
 }
 .p2 {
@@ -50,6 +50,7 @@ input[placeholder] {
 button {
   margin: 0 auto;
   margin-top: 50px;
+  margin-bottom: 50px;
   color: darkblue;
   font-size: 20px;
   font-weight: bold;
