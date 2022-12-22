@@ -301,8 +301,8 @@ difficulty.onclick = function (e) {
 };
 let currentQuestion = 0; // imposta il contatore delle domande a zero
 let score = 0;
-let Tempo = 10;
-let countdown = 10;
+let Tempo = 20;
+let countdown = 20;
 // imposta il punteggio a zero
 
 // funzione per generare il quiz
@@ -345,7 +345,7 @@ function generateQuiz(domande) {
           `
         )
         .join("")}
-        <button type="submit" id="next">Invia</button>
+        <button type="submit" id="next">Send</button>
       </form>
     `;
 
@@ -393,7 +393,7 @@ function generateQuiz(domande) {
 
     // vai alla prossima domanda
     currentQuestion++;
-    countdown = 10;
+    countdown = 20;
 
     // controlla se ci sono ancora domande da mostrare
     if (currentQuestion < domande.length) {
