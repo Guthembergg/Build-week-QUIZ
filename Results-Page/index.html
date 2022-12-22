@@ -110,32 +110,62 @@
         let width = chart.chart.width,
           height = chart.chart.height,
           ctx = chart.chart.ctx;
-
+          
         ctx.restore();
-        let fontSize = (height / 114).toFixed(2);
+        let fontSize = (height / 400).toFixed(2)
         ctx.font = fontSize + "em sans-serif";
         ctx.textBaseline = "middle";
-        ctx.fontColor = "#fff";
-
-        let text = "Passing",
-          textX = Math.round((width - ctx.measureText(text).width) / 2),
-          textY = height / 2;
-
-        let text1 = "Rejected",
-          text1X = Math.round((width - ctx.measureText(text1).width) / 2),
-          text1Y = height / 2;
-
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "white";
+        var text2 ="You passed the exam. "
+        var text = "Congratulations! "+ text2 + "We'll send you the certificate in few minutes. Check your e-mail (including promotion/spam folder)";
+        var maxWidth = 200;
+        var words = text.split(" ");     
+        var lines = [];
+        var line = "";
+        var text3 = "Oh no, you failed the exam. Try again!"
+        var parole = text3.split(" ");
+        
         if (score / numeroDomande >= 0.6) {
-          ctx.fillText(text, textX, textY);
+          for (var i = 0; i < words.length; i++) {
+        var testLine = line + words[i] + " ";
+        var metrics = ctx.measureText(testLine);
+        var testWidth = metrics.width;
+        if (testWidth > maxWidth) {
+        lines.push(line);
+        line = words[i] + " ";
+        } else {
+        line = testLine;
         }
-        if (score / numeroDomande < 0.6) {
-          ctx.fillText(text1, text1X, text1Y);
+        }
+        lines.push(line);
+
+        for (var i = 0; i < lines.length; i++) {
+          ctx.fillText(lines[i], 390, 150 + (i * 30));
+        }
+        }
+        else if (score / numeroDomande < 0.6) {
+          for (var i = 0; i < parole.length; i++) {
+          var testLine = line + parole[i] + " ";
+        var metrics = ctx.measureText(testLine);
+        var testWidth = metrics.width;
+        if (testWidth > maxWidth) {
+        lines.push(line);
+        line = parole[i] + " ";
+        } else {
+        line = testLine;
+        }
+        }
+        lines.push(line);
+
+        for (var i = 0; i < lines.length; i++) {
+          ctx.fillText(lines[i], 390, 220 + (i * 30));
+        }
         }
 
         ctx.save();
-      },
-    });
-
+      }}
+    )
     let myChart = document.getElementById("myChart").getContext("2d");
 
     //  Chart.defaults.global.defaultFontFamily = 'Arial'
