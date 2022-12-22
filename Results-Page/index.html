@@ -1,3 +1,14 @@
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,7 +38,7 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-image: url(bg.jpg);
-        height: 65em;
+        height: 100%;
         font-family: 'Inter', sans-serif;
       }
 
@@ -50,14 +61,68 @@
 
       img {
         width: 130px;
-        margin-left: 250px;
         margin-top: 40px;
-      }
+        margin-left: 300px;
+        margin-top: 40px;
+}
+      
 
       canvas {
         margin-bottom: 3.9em;
-        color: white;
+        
+
       }
+
+      .container{
+        display: inline-block;
+      }
+    
+      #left-div{color: white;
+                          font-size: 60px;
+                          font-family: 'Outfit', sans-serif;
+                          font-weight:400;
+                          height:20%;
+                          display: inline-block;
+                          width: 20%;
+                        margin-left:3rem;
+                        margin-top: 3rem
+                    
+                    }
+      #right-div{color: white;
+                          font-size: 60px;
+                          font-family: 'Outfit', sans-serif;
+                          font-weight:400;
+                          height:20%;
+                          display: inline-block;
+                          width: 20%;
+                          margin-right:3rem;
+                        margin-top: 3rem;
+                        }
+                        #left-div p, #right-div p {
+        font-size: 26px;
+    }
+
+    #left-div h2, #right-div h2 {
+        font-size: 60px;
+    }
+     
+    
+    article{
+        display:flex
+    }
+      
+    #left-div strong{
+        font-size: 60px;
+        font-weight: bolder;
+        color: #00ffff;
+
+    }
+    #right-div strong{
+        font-size: 60px;
+        font-weight: bolder;
+        color: #d20093d4;
+
+    }
 
       button:hover {
         font-family: 'Outfit', sans-serif;
@@ -111,10 +176,13 @@
     </figure>
     <h1>Results</h1>
     <h3>The summary of your answers is:</h3>
+    <article>
+    <div id="left-div"></div>
     <div class="container">
       <canvas id="myChart"></canvas>
     </div>
-
+<div id="right-div"></div>
+</article>
     <div class="button">
       <button onclick="feedback()">RATE US</button>
     </div>
@@ -128,11 +196,20 @@
 
     let numeroDomande = sessionStorage.getItem("numeroDomande");
 
-    // let score = 15
-
-    // let numeroDomande = 30
 
     let wrongAnswers = numeroDomande - score;
+
+// let score = 15
+// let numeroDomande = 30
+// let wrongAnswers = numeroDomande - score
+
+let leftDiv = document.getElementById('left-div')
+let rightDiv = document.getElementById('right-div')
+
+leftDiv.innerHTML = `<h2> Correct <br><strong id='strong'>${Math.floor((score / numeroDomande) * 100)}%</strong><h2><br><p> ${score}/${numeroDomande} questions<p/>`
+rightDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnswers / numeroDomande) * 100)}%</strong><h2><br> <p>${wrongAnswers}/${numeroDomande} questions<p/>`
+
+
 
     Chart.pluginService.register({
       beforeDraw: function (chart) {
@@ -147,6 +224,7 @@
         ctx.font = "22px Arial";
         ctx.fillStyle = "white";
         var text2 ="You passed the exam. "
+        text2.fillStyle="#00ffff"
         // ctx.text.fillStyle="#00ffff"
         var text = "Congratulations! "+ text2 + "We'll send you the certificate in few minutes. Check your e-mail (including promotion /spam folder)";
         var maxWidth = 220;
@@ -171,7 +249,7 @@
         lines.push(line);
 
         for (var i = 0; i < lines.length; i++) {
-          ctx.fillText(lines[i], 560, 220 + (i * 30));
+          ctx.fillText(lines[i], 400, 147 + (i * 30));
         }
         }
         else if (score / numeroDomande < 0.6) {
@@ -189,7 +267,7 @@
         lines.push(line);
 
         for (var i = 0; i < lines.length; i++) {
-          ctx.fillText(lines[i], 560 , 300 + (i * 30));
+          ctx.fillText(lines[i], 405 , 250 + (i * 30));
         }
         }
 
@@ -211,16 +289,17 @@
             label: ["Correct Answers", "Wrong Answers"],
             data: [score, wrongAnswers],
             backgroundColor: ["#00FFFF", "#D20094"],
-            borderWidth: 2,
+            borderWidth: 0,
             borderColor: "#777",
             hoverBorderWidth: 3,
             hoverBorderColor: "#777a",
+            boxShadow: 2 
           },
         ],
       },
       options: {
         cutoutPercentage: 65,
-        rotation: Math.PI * 1.5,
+        rotation: Math.PI * 0.2,
         //   title:{
         //     display: true,
         //     fontSize: 26,
@@ -237,3 +316,18 @@
     });
   </script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
