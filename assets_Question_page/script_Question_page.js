@@ -347,7 +347,7 @@ function generateQuiz(domande) {
           `
         )
         .join("")}
-        <button type="submit" id="next">Send</button>
+        <button type="submit" id="next">SEND</button>
       </form>
     `;
 
@@ -418,13 +418,13 @@ function generateQuiz(domande) {
       for (let i = 0; i < arraySbagliate.length; i++) {
         sbagliateScritta =
           sbagliateScritta +
-          `<div class="sbagliate"><h3>-${arraySbagliate[i].domandaCorrente})<i> ${arraySbagliate[i].numeroQuestion}</i> <br>you replied: </h3><h4>${arraySbagliate[i].answer}</h4> <h3>the correct answer was </h3><h5>${arraySbagliate[i].giusta}<h5></div>`;
+          `<div class="sbagliate"><h3>${arraySbagliate[i].domandaCorrente})<i> ${arraySbagliate[i].numeroQuestion}</i> <br>you replied: </h3><h4>${arraySbagliate[i].answer}</h4> <h3>the correct answer was </h3><h5>${arraySbagliate[i].giusta}<h5></div>`;
       }
       if(arraySbagliate.length>0){
         
         sbagliateScritta =
         sbagliateScritta +
-        `<button type="submit" id="continua"> Next </button>`;
+        `<button type="submit" id="continua"> NEXT </button>`;
 
         quizContainer.innerHTML = sbagliateScritta;
         quizContainer.addEventListener("submit", (event) => {

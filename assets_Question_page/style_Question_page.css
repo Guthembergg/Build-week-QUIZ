@@ -1,17 +1,18 @@
 * {
   text-align: center;
-
+  font-family: 'Inter', sans-serif;
 }
-h1 {
+
+h1{
   color: white;
   font-size: 50px;
-  font-family: Outfit;
+  font-family: 'Outfit', sans-serif;
   margin-top: 10%;
 }
 h2 {
   color: white;
   font-size: 50px;
-  font-family: Outfit;
+  font-family: 'Outfit', sans-serif;
 
 }
 label {
@@ -22,11 +23,12 @@ label {
 h3 {
   color: rgb(176, 50, 204);
   font-size: 30px;
+  font-family: 'Outfit', sans-serif;
 }
 
 .radio {
   padding: 2%;
-  border: 1px solid rgba(84, 84, 84, 0.313);
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 10px;
   padding-left: 0;
   width: 30%;
@@ -40,7 +42,7 @@ input[type="radio"] {
   background-color: rgba(106, 5, 157, 0.192);
 }
 .selected {
-  background-color: rgba(0, 234, 255, 0.381);
+  background-color:#00ffffa1;
 }
 button {
   /* margin-left: 5%; */
@@ -131,6 +133,7 @@ h3 {
   display: inline;
   text-align: left;
   padding-bottom: 1px;
+  font-family: 'Outfit', sans-serif;
 }
 h4 {
   color: red;
@@ -138,6 +141,7 @@ h4 {
   display: inline-block;
   text-align: left;
   margin-top: 10px;
+  font-family: 'Outfit', sans-serif;
 }
 h5 {
   color: green;
@@ -145,16 +149,19 @@ h5 {
   display: inline-block;
   text-align: left;
   margin-top: 10px;
+  font-family: 'Outfit', sans-serif;
 }
 
 .sbagliate {
   padding-bottom: 5%;
-  font-family: Outfit;
+  word-wrap: break-word;
+  font-family: 'Outfit', sans-serif;
 }
 
 #next {
   margin-top: 2%;
   margin-left: 0;
+  font-size: 13px;
 }
 #quiz{
   word-wrap: break-word;

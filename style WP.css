@@ -1,5 +1,5 @@
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 23px;
   color: white;
 
@@ -28,6 +28,7 @@
 h1 {
   font-size: 80px;
   line-height: 0.8;
+  font-family: 'Outfit', sans-serif;
 }
 
 .spanH1 {
@@ -37,6 +38,7 @@ h1 {
 
 h2 {
   font-size: 50px;
+  font-family: 'Outfit', sans-serif;
 }
 h3 {
   text-align: left;
@@ -45,6 +47,7 @@ h3 {
   color: #d20094;
   font-size: 30px;
   font-weight: 600;
+  font-family: 'Outfit', sans-serif;
 }
 
 .list {
@@ -59,6 +62,8 @@ h3 {
 }
 
 button {
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
   width: 220px;
   height: 65px;
   margin-left: 200px;
@@ -74,16 +79,17 @@ button {
   -o-box-shadow: 4px -3px 54px -2px #00ffff;
 }
 
-button:active {
+/* button:active {
   border: 3px solid #00ffff;
   color: #00ffff;
   box-shadow: 1px 1px 10px 13px #00ffff;
   -webkit-box-shadow: 4px -3px 54px -2px #00ffff;
   -moz-box-shadow: 4px -3px 54px -2px #00ffff;
   -o-box-shadow: 4px -3px 54px -2px #00ffff;
-}
+} */
 
 .buttonLink {
+  cursor: pointer;
   text-decoration: none;
   color: black;
   font-weight: 700;
