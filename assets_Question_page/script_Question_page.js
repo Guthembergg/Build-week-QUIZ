@@ -413,12 +413,12 @@ function generateQuiz(domande) {
     function showAnswers() {
       let body = document.querySelector("body");
       //body.removeChild(quizContainer);
-      let sbagliateScritta = "";
+      let sbagliateScritta = "<h2>Wrong answers</h2>";
       const sbagliate = document.createElement("div");
       for (let i = 0; i < arraySbagliate.length; i++) {
         sbagliateScritta =
           sbagliateScritta +
-          `<div class="sbagliate"><h3>${arraySbagliate[i].domandaCorrente})<i> ${arraySbagliate[i].numeroQuestion}</i> <br>you replied: </h3><h4>${arraySbagliate[i].answer}</h4> <h3>the correct answer was </h3><h5>${arraySbagliate[i].giusta}<h5></div>`;
+          `<div class="sbagliate"><h3>${arraySbagliate[i].domandaCorrente})<i> ${arraySbagliate[i].numeroQuestion}</i> <br>you replied: </h3><h4>${arraySbagliate[i].answer}</h4> <h3>, the correct answer was: </h3><h5>${arraySbagliate[i].giusta}<h5></div>`;
       }
       if(arraySbagliate.length>0){
         

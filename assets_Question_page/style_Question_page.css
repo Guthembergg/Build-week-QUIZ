@@ -2,7 +2,13 @@
   text-align: center;
   font-family: 'Inter', sans-serif;
 }
-
+.logo{
+  display: flex;
+  justify-content: left;
+  width: 130px;
+  margin-left: 300px;
+  margin-top: 40px;
+}
 h1{
   color: white;
   font-size: 50px;
@@ -152,10 +158,12 @@ h5 {
   font-family: 'Outfit', sans-serif;
 }
 
+
 .sbagliate {
   padding-bottom: 5%;
   word-wrap: break-word;
   font-family: 'Outfit', sans-serif;
+  margin-bottom: -31px;
 }
 
 #next {
@@ -165,7 +173,9 @@ h5 {
 }
 #quiz{
   word-wrap: break-word;
+
 }
 i{
   font-size: 20px;
 }
+

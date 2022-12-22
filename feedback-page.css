@@ -45,7 +45,7 @@ input {
   color: white;
   background: transparent;
   border: none;
-  border-bottom: 2px solid darkorchid;
+  border-bottom: 3px solid #d20094;
 }
 input[placeholder] {
   font-size: 17px;
