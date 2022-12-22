@@ -1,5 +1,6 @@
 * {
   text-align: center;
+
 }
 h1 {
   font-size: 50px;
@@ -25,7 +26,8 @@ h3 {
   border-radius: 10px;
   padding-left: 0;
   width: 30%;
-  margin-left: 30%;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 input[type="radio"] {
   opacity: 0;
@@ -37,7 +39,7 @@ input[type="radio"] {
   background-color: rgba(0, 234, 255, 0.381);
 }
 button {
-  margin-left: 5%;
+  /* margin-left: 5%; */
   width: 100px;
   height: 55px;
   background-color: rgba(95, 95, 95, 0.086);
@@ -76,14 +78,18 @@ body {
   display: inline-block;
   line-height: 10px;
 }
+
 z svg {
   position: relative;
   margin-top: 110px;
   right: 0;
   height: 40%;
-  width: 40%;
+  width: 10%;
   transform: rotateY(-180deg) rotateZ(-90deg);
   border-radius: 150px;
+}
+svg{
+  width: 100px;
 }
 
 svg circle {
@@ -126,12 +132,14 @@ h4 {
   font-size: 16px;
   display: inline-block;
   text-align: left;
+  margin-top: 10px;
 }
 h5 {
   color: green;
   font-size: 16px;
   display: inline-block;
   text-align: left;
+  margin-top: 10px;
 }
 
 .sbagliate {
@@ -141,4 +149,11 @@ h5 {
 
 #next {
   margin-top: 2%;
+  margin-left: 0;
+}
+#quiz{
+  word-wrap: break-word;
+}
+i{
+  font-size: 20px;
 }

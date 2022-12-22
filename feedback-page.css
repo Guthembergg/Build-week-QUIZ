@@ -32,19 +32,20 @@ button {
 }
 .logo {
   width: 130px;
-  margin-left: 250px;
+  margin-left: 300px;
   margin-top: 40px;
 }
 input {
   width: 50%;
   height: 30px;
+  color: white;
   background: transparent;
   border: none;
   border-bottom: 2px solid darkorchid;
 }
 input[placeholder] {
   font-size: 17px;
-  color: rgba(83, 83, 83, 0.9);
+  /* color: rgba(83, 83, 83, 0.9); */
   padding-left: 40px;
 }
 button {

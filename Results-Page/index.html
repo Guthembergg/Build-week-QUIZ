@@ -49,7 +49,7 @@
         color: white;
       }
 
-      a:hover {
+      button:hover {
         border: 3px solid #d20094;
         color: #d20094;
         -webkit-box-shadow: -1px -12px 34px 9px #d20094;
@@ -58,7 +58,7 @@
         box-shadow: -1px -12px 34px 9px #d20094;
       }
 
-      a:active {
+      button:active {
         border: 3px solid #00ffff;
         color: #00ffff;
 
@@ -68,16 +68,22 @@
         box-shadow: -1px -12px 34px 9px #00ffff;
       }
 
-      a {
+      button {
         font-size: 30px;
         border: 1px solid #ffffff;
-        color: #fff;
-        text-decoration: none;
+        background-color: transparent;
+        appearance: none;
         padding: 0.5em 2em 0.5em 2em;
         font-weight: 800;
         margin: 0 auto 0 auto;
-        margin-left: 21.3em;
         margin-bottom: 2em;
+      }
+      .button{
+        text-align: center;
+      }
+      a{
+        color:white;
+        text-decoration: none;
       }
     </style>
   </head>
@@ -91,7 +97,9 @@
       <canvas id="myChart"></canvas>
     </div>
 
-    <a href="/feedback-page.html">RATE US</a>
+    <div class="button">
+      <button><a href="/feedback-page.html">RATE US</a></button>
+    </div>
   </body>
 
   <script>
@@ -115,11 +123,11 @@
         let fontSize = (height / 400).toFixed(2)
         ctx.font = fontSize + "em sans-serif";
         ctx.textBaseline = "middle";
-        ctx.font = "16px Arial";
+        ctx.font = "22px Arial";
         ctx.fillStyle = "white";
         var text2 ="You passed the exam. "
-        var text = "Congratulations! "+ text2 + "We'll send you the certificate in few minutes. Check your e-mail (including promotion/spam folder)";
-        var maxWidth = 200;
+        var text = "Congratulations! "+ text2 + "We'll send you the certificate in few minutes. Check your e-mail (including promotion /spam folder)";
+        var maxWidth = 220;
         var words = text.split(" ");     
         var lines = [];
         var line = "";
@@ -141,7 +149,7 @@
         lines.push(line);
 
         for (var i = 0; i < lines.length; i++) {
-          ctx.fillText(lines[i], 390, 150 + (i * 30));
+          ctx.fillText(lines[i], 560, 220 + (i * 30));
         }
         }
         else if (score / numeroDomande < 0.6) {
@@ -159,7 +167,7 @@
         lines.push(line);
 
         for (var i = 0; i < lines.length; i++) {
-          ctx.fillText(lines[i], 390, 220 + (i * 30));
+          ctx.fillText(lines[i], 560 , 300 + (i * 30));
         }
         }
 
