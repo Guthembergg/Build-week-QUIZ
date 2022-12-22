@@ -2,11 +2,11 @@
   text-align: center;
 }
 h1 {
-  font-size: 60px;
+  font-size: 50px;
 }
 h2 {
   color: white;
-  font-size: 60px;
+  font-size: 50px;
   font-family: Outfit;
 }
 label {
@@ -21,10 +21,9 @@ h3 {
 
 .radio {
   padding: 2%;
-  display: inline-block;
   border: 1px solid rgba(84, 84, 84, 0.313);
   border-radius: 10px;
-  padding-right: 2%;
+
   padding-left: 0;
 }
 input[type="radio"] {
@@ -53,8 +52,10 @@ button:hover {
 }
 
 body {
+  width: 100%;
   background-image: url("/assets_Question_page/img/bg.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
 }
 .red {
   font-style: italic;
@@ -135,4 +136,8 @@ h5 {
 .sbagliate {
   padding-bottom: 5%;
   font-family: Outfit;
+}
+
+#next {
+  margin-top: 2%;
 }

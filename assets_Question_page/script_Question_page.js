@@ -272,19 +272,21 @@ difficulty.onclick = function (e) {
     generateQuiz(2);
     domande2 = questions2;
   }
+
   setInterval(
     function () {
       //countdown = Tempo;
-
+      let length2 = domande2.length - 2;
       countdown--;
-      if (countdown === 0 && currentQuestion < domande2.length - 1) {
+      if (countdown === 0 && currentQuestion < length2) {
         currentQuestion++;
         generateQuiz(domande2);
         //countdown = Tempo;
+        console.log(currentQuestion, length2);
 
         //countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
       }
-      if (currentQuestion >= domande2.length - 1 && countdown === 0) {
+      if (countdown === 0 && currentQuestion >= length2) {
         //window.location.href = "index_Results-Page.html"
         //alert(arraySbagliate);
         showAnswers();
