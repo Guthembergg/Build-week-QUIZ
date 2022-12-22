@@ -256,7 +256,7 @@ const resultsContainer = document.getElementById("results");
 const submitButton = document.getElementById("next");
 const difficulty = document.getElementById("difficulty");
 
-const hardness = `<h2> Select Difficulty:</h2><button id="hard" value="hard">Hard</div><button id="hard" value="easy">Easy</div>
+const hardness = `<h1> Select Difficulty:</h1><button id="hard" value="hard">Hard</div><button id="hard" value="easy">Easy</div>
 `;
 difficulty.innerHTML = hardness;
 difficulty.onclick = function (e) {
@@ -420,14 +420,17 @@ function generateQuiz(domande) {
           sbagliateScritta +
           `<div class="sbagliate"><h3>-${arraySbagliate[i].domandaCorrente})<i> ${arraySbagliate[i].numeroQuestion}</i> <br>you replied: </h3><h4>${arraySbagliate[i].answer}</h4> <h3>the correct answer was </h3><h5>${arraySbagliate[i].giusta}<h5></div>`;
       }
-      sbagliateScritta =
+      if(arraySbagliate.length>0){
+        
+        sbagliateScritta =
         sbagliateScritta +
         `<button type="submit" id="continua"> Next </button>`;
 
-      quizContainer.innerHTML = sbagliateScritta;
-      quizContainer.addEventListener("submit", (event) => {
-        window.location.href = "/Results-Page/index.html";
-      });
+        quizContainer.innerHTML = sbagliateScritta;
+        quizContainer.addEventListener("submit", (event) => {
+          window.location.href = "/Results-Page/index.html";
+        });
+      }else{window.location.href = "/Results-Page/index.html";}
       //body.appendChild(sbagliate);
     }
   });
