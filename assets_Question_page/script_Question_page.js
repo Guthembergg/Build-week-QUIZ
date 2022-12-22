@@ -272,20 +272,24 @@ difficulty.onclick = function (e) {
     generateQuiz(2);
     domande2 = questions2;
   }
+
   setInterval(
     function () {
       //countdown = Tempo;
-
+      let length2 = domande2.length - 2;
       countdown--;
-      if (countdown === 0 && currentQuestion < domande2.length - 1) {
+      if (countdown === 0 && currentQuestion < length2) {
         currentQuestion++;
         generateQuiz(domande2);
         //countdown = Tempo;
+        console.log(currentQuestion, length2);
 
         //countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
       }
-      if (currentQuestion >= domande2.length - 1 && countdown === 0) {
-        window.location.href = "index_Results-Page.html";
+      if (countdown === 0 && currentQuestion >= length2) {
+        //window.location.href = "index_Results-Page.html"
+        //alert(arraySbagliate);
+        showAnswers();
         sessionStorage.setItem("score", score);
         sessionStorage.setItem("numeroDomande", domande.length);
 
@@ -299,8 +303,8 @@ difficulty.onclick = function (e) {
 };
 let currentQuestion = 0; // imposta il contatore delle domande a zero
 let score = 0;
-let Tempo = 10;
-let countdown = 10;
+let Tempo = 20;
+let countdown = 20;
 // imposta il punteggio a zero
 
 // funzione per generare il quiz
@@ -336,14 +340,14 @@ function generateQuiz(domande) {
         .map(
           (answer) => `
             <label><div class="radio">
-              <input type="radio" name="question${currentQuestion}" value="${answer}" " >
+              <input type="radio" name="question${currentQuestion}" value="${answer}" id="${question}" >
               ${answer}
               </div>
             </label>
           `
         )
         .join("")}
-        <button type="submit" id="next">Invia</button>
+        <button type="submit" id="next">Send</button>
       </form>
     `;
 
@@ -359,11 +363,12 @@ function generateQuiz(domande) {
       e.target.parentElement.classList.toggle("selected");
 
       if (e.target.value !== domande[currentQuestion].correct_answer) {
-        e.target.parentElement.classList.add("red");
+        // e.target.parentElement.classList.toggle("red");
+        // arraySbagliate.push(e.target.value);
       }
     }
   };
-
+  let arraySbagliate = [];
   quizContainer.addEventListener("submit", (event) => {
     event.preventDefault(); // impedisci il submit del form
 
@@ -373,11 +378,15 @@ function generateQuiz(domande) {
     );
     // const selected = document.querySelector(".selected");
     const answer = selected.value;
-
+    const numeroQuestion = selected.id;
+    const giusta = domande[currentQuestion].correct_answer;
+    const domandaCorrente = currentQuestion + 1;
+    arrAnswer = { domandaCorrente, numeroQuestion, answer, giusta };
     // controlla se la risposta è corretta
     if (answer === domande[currentQuestion].correct_answer) {
       score++; // aumenta il punteggio di 1
     } else {
+      arraySbagliate.push(arrAnswer);
       //console.log(selected);
       //selected.classList.add("red");
     }
@@ -386,17 +395,40 @@ function generateQuiz(domande) {
 
     // vai alla prossima domanda
     currentQuestion++;
-    countdown = 10;
+    countdown = 20;
 
     // controlla se ci sono ancora domande da mostrare
     if (currentQuestion < domande.length) {
       generateQuiz(domande);
       // mostra la prossima domanda
     } else {
-      alert(score);
-      window.location.href = "/Results-Page/index.html";
+      //alert(arraySbagliate);
+      //console.log(arraySbagliate);
+      showAnswers();
+      //window.location.href = "index_Results-Page.html";
       sessionStorage.setItem("score", score);
       sessionStorage.setItem("numeroDomande", domande.length);
+    }
+
+    function showAnswers() {
+      let body = document.querySelector("body");
+      //body.removeChild(quizContainer);
+      let sbagliateScritta = "";
+      const sbagliate = document.createElement("div");
+      for (let i = 0; i < arraySbagliate.length; i++) {
+        sbagliateScritta =
+          sbagliateScritta +
+          `<div class="sbagliate"><h3>-${arraySbagliate[i].domandaCorrente})<i> ${arraySbagliate[i].numeroQuestion}</i> <br>you replied: </h3><h4>${arraySbagliate[i].answer}</h4> <h3>the correct answer was </h3><h5>${arraySbagliate[i].giusta}<h5></div>`;
+      }
+      sbagliateScritta =
+        sbagliateScritta +
+        `<button type="submit" id="continua"> Next </button>`;
+
+      quizContainer.innerHTML = sbagliateScritta;
+      quizContainer.addEventListener("submit", (event) => {
+        window.location.href = "/Results-Page/index.html";
+      });
+      //body.appendChild(sbagliate);
     }
   });
 }
