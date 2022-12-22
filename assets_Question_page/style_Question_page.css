@@ -93,13 +93,13 @@ svg circle {
   stroke-width: 4px;
   stroke: #00ffff;
   fill: none;
-  animation: countdown 10s linear infinite forwards;
+  animation: countdown 20s linear infinite forwards;
   border-radius: 150px;
 }
 
 @keyframes countdown {
   from {
-    stroke-dashoffset: 0px;
+    stroke-dashoffset: -0px;
   }
   to {
     stroke-dashoffset: 113px;
@@ -135,7 +135,4 @@ h5 {
 .sbagliate {
   padding-bottom: 5%;
   font-family: Outfit;
-}
-#continua {
-  left: 50%;
 }
