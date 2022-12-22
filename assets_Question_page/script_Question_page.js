@@ -424,7 +424,7 @@ function generateQuiz(domande) {
 
       quizContainer.innerHTML = sbagliateScritta;
       quizContainer.addEventListener("submit", (event) => {
-        window.location.href = "index_Results-Page.html";
+        window.location.href = "/Results-Page/index.html";
       });
       //body.appendChild(sbagliate);
     }
