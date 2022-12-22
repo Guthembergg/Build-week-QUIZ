@@ -6,7 +6,7 @@ stars.forEach(star => {
     console.log(`Value: ${value}`);
     
     for (let i = 0; i < value; i++) {
-        stars[i].classList.toggle('selected');
+        stars[i].classList.add('selected');
     }
     });
 });
