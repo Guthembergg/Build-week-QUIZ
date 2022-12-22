@@ -285,7 +285,9 @@ difficulty.onclick = function (e) {
         //countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
       }
       if (currentQuestion >= domande2.length - 1 && countdown === 0) {
-        window.location.href = "index_Results-Page.html";
+        //window.location.href = "index_Results-Page.html"
+        //alert(arraySbagliate);
+        showAnswers();
         sessionStorage.setItem("score", score);
         sessionStorage.setItem("numeroDomande", domande.length);
 
@@ -336,7 +338,7 @@ function generateQuiz(domande) {
         .map(
           (answer) => `
             <label><div class="radio">
-              <input type="radio" name="question${currentQuestion}" value="${answer}" " >
+              <input type="radio" name="question${currentQuestion}" value="${answer}" id="${question}" >
               ${answer}
               </div>
             </label>
@@ -359,25 +361,104 @@ function generateQuiz(domande) {
       e.target.parentElement.classList.toggle("selected");
 
       if (e.target.value !== domande[currentQuestion].correct_answer) {
-        e.target.parentElement.classList.add("red");
+        // e.target.parentElement.classList.toggle("red");
+        // arraySbagliate.push(e.target.value);
       }
     }
   };
-
+  let arraySbagliate = [];
   quizContainer.addEventListener("submit", (event) => {
     event.preventDefault(); // impedisci il submit del form
 
+<<<<<<<< HEAD:assets_Question_page/script_Question_page.js
+// // Imposta il timer a 60 secondi
+// timerTot = 50;
+// let percentage;
+
+// timer = timerTot;
+// interval = setInterval(function () {
+//   timer--;
+//   percentage = timer / timerTot;
+//   percentage = document.getElementById("timer").innerText =
+//     "Tempo rimanente: " + timer + " secondi";
+
+//   // Se il timer scade, invia la domanda , resetta il timer e passa alla prossima domanda
+//   if (timer === 0) {
+//     timer = timerTot;
+//     currentQuestion++;
+//     generateQuiz();
+//   }
+// }, 1000); // Aggiorna il timer ogni secondo
+
+let countdownNumberEl = document.getElementById("countdown-number");
+let countdown = 10;
+
+countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+
+setInterval(function () {
+  countdown = --countdown;
+  if (countdown === 0) {
+    countdown = 10;
+    currentQuestion++;
+    generateQuiz();
+    countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+  }
+  countdownNumberEl.innerText = `Seconds ${countdown} remaining`;
+}, 1000);
+
+quizContainer.onclick = function (e) {
+  if (e.target.tagName === "INPUT") {
+    if (e.target.value !== questions[currentQuestion].correct_answer) {
+      e.target.parentElement.classList.toggle("red");
+    }
+  }
+};
+
+function showResults() {
+  // recupera il numero totale di domande
+  const totalQuestions = questions.length;
+
+  // genera il codice HTML per i risultati
+  const results = `
+        <h2>Hai completato il quiz!</h2>
+        <h3>Il tuo punteggio: ${score} / ${totalQuestions}</h3>
+      `;
+
+  resultsContainer.innerHTML = results; // inserisci il codice HTML nel container dei risultati
+}
+
+quizContainer.addEventListener("submit", (event) => {
+  event.preventDefault(); // impedisci il submit del form
+  countdown = 10;
+  // recupera la risposta selezionata dall'utente
+  const selected = document.querySelector(
+    `input[name=question${currentQuestion}]:checked`
+  );
+  const answer = selected.value;
+
+  // controlla se la risposta è corretta
+  if (answer === questions[currentQuestion].correct_answer) {
+    score++; // aumenta il punteggio di 1
+  } else {
+    //console.log(selected);
+    //selected.classList.add("red");
+  }
+========
     // recupera la risposta selezionata dall'utente
     const selected = document.querySelector(
       `input[name=question${currentQuestion}]:checked`
     );
     // const selected = document.querySelector(".selected");
     const answer = selected.value;
-
+    const numeroQuestion = selected.id;
+    const giusta = domande[currentQuestion].correct_answer;
+    const domandaCorrente = currentQuestion + 1;
+    arrAnswer = { domandaCorrente, numeroQuestion, answer, giusta };
     // controlla se la risposta è corretta
     if (answer === domande[currentQuestion].correct_answer) {
       score++; // aumenta il punteggio di 1
     } else {
+      arraySbagliate.push(arrAnswer);
       //console.log(selected);
       //selected.classList.add("red");
     }
@@ -393,10 +474,33 @@ function generateQuiz(domande) {
       generateQuiz(domande);
       // mostra la prossima domanda
     } else {
-      alert(score);
-      window.location.href = "/Results-Page/index.html";
+      //alert(arraySbagliate);
+      //console.log(arraySbagliate);
+      showAnswers();
+      //window.location.href = "index_Results-Page.html";
       sessionStorage.setItem("score", score);
       sessionStorage.setItem("numeroDomande", domande.length);
+    }
+
+    function showAnswers() {
+      let body = document.querySelector("body");
+      //body.removeChild(quizContainer);
+      let sbagliateScritta = "";
+      const sbagliate = document.createElement("div");
+      for (let i = 0; i < arraySbagliate.length; i++) {
+        sbagliateScritta =
+          sbagliateScritta +
+          `<div class="sbagliate"><h3>-${arraySbagliate[i].domandaCorrente})<i> ${arraySbagliate[i].numeroQuestion}</i> <br>you replied: </h3><h4>${arraySbagliate[i].answer}</h4> <h3>the correct answer was </h3><h5>${arraySbagliate[i].giusta}<h5></div>`;
+      }
+      sbagliateScritta =
+        sbagliateScritta +
+        `<button type="submit" id="continua"> Next </button>`;
+
+      quizContainer.innerHTML = sbagliateScritta;
+      quizContainer.addEventListener("submit", (event) => {
+        window.location.href = "index_Results-Page.html";
+      });
+      //body.appendChild(sbagliate);
     }
   });
 }
@@ -404,6 +508,7 @@ function generateQuiz(domande) {
 //generateQuiz(); // mostra la prima domanda
 
 //const progressBar = document.getElementById("progress-bar"); // seleziona l'elemento HTML con l'ID "progress-bar"
+>>>>>>>> Feature/Question_page:assets/script_Question_page.js
 
 // function showResults() {
 //   // recupera il numero totale di domande
@@ -415,6 +520,17 @@ function generateQuiz(domande) {
 //         <h3>Il tuo punteggio: ${score} / ${totalQuestions}</h3>
 //       `;
 
+<<<<<<<< HEAD:assets_Question_page/script_Question_page.js
+  // controlla se ci sono ancora domande da mostrare
+  if (currentQuestion < questions.length) {
+    generateQuiz(); // mostra la prossima domanda
+  } else {
+    window.location.href = "index_Results-Page.html";
+    //showResults(); // mostra i risultati del quiz
+    //quizContainer.remove(); // elimina il quiz
+  }
+});
+========
 //   resultsContainer.innerHTML = results; // inserisci il codice HTML nel container dei risultati
 // }
 
@@ -422,3 +538,4 @@ function generateQuiz(domande) {
 
 // let score = sessionStorage.getItem("score");
 // let numeroDomande = sessionStorage.getItem("numeroDomande");
+>>>>>>>> Feature/Question_page:assets/script_Question_page.js
