@@ -70,6 +70,7 @@
 
       button {
         font-size: 30px;
+        color: white;
         border: 1px solid #ffffff;
         background-color: transparent;
         appearance: none;
@@ -98,12 +99,16 @@
     </div>
 
     <div class="button">
-      <button><a href="/feedback-page.html">RATE US</a></button>
+      <button onclick="feedback()">RATE US</button>
     </div>
   </body>
 
   <script>
     let score = sessionStorage.getItem("score");
+    function feedback(){
+    window.open("/feedback-page.html");
+    
+}
 
     let numeroDomande = sessionStorage.getItem("numeroDomande");
 
@@ -126,6 +131,7 @@
         ctx.font = "22px Arial";
         ctx.fillStyle = "white";
         var text2 ="You passed the exam. "
+        // ctx.text.fillStyle="#00ffff"
         var text = "Congratulations! "+ text2 + "We'll send you the certificate in few minutes. Check your e-mail (including promotion /spam folder)";
         var maxWidth = 220;
         var words = text.split(" ");     
