@@ -248,7 +248,7 @@ leftDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnswe
         let fontSize = (height / 400).toFixed(2)
         ctx.font = fontSize + "em sans-serif";
         ctx.textBaseline = "middle";
-        ctx.font = "14px Arial";
+        ctx.font = "13px Arial";
         ctx.fillStyle = "white";
         var text2 ="You passed the exam. "
         text2.fillStyle="#00ffff"
@@ -276,7 +276,7 @@ leftDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnswe
         lines.push(line);
 
         for (var i = 0; i < lines.length; i++) {
-          ctx.fillText(lines[i], 250, 120 + (i * 30));
+          ctx.fillText(lines[i], 220, 110 + (i * 30));
         }
         }
         else if (score / numeroDomande < 0.6) {
@@ -294,7 +294,7 @@ leftDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnswe
         lines.push(line);
 
         for (var i = 0; i < lines.length; i++) {
-          ctx.fillText(lines[i], 250 , 165 + (i * 30));
+          ctx.fillText(lines[i], 220 , 140 + (i * 30));
         }
         }
 
