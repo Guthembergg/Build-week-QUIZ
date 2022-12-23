@@ -49,14 +49,16 @@
         margin-bottom: 0em;
         font-weight: 700;
         font-family: 'Outfit', sans-serif;
+        text-align: center;
       }
 
       h3 {
         text-align: center;
         color: #fff;
-        margin-bottom: 2em;
+        margin-bottom: 6.6rem;
         font-weight: 400;
         font-family: 'Outfit', sans-serif;
+        text-align: center;
       }
 
       img {
@@ -66,6 +68,9 @@
         margin-top: 40px;
 }
       
+figure{
+  margin-bottom: 4.5rem;
+}
 
       canvas {
         margin-bottom: 3.9em;
@@ -84,8 +89,8 @@
                           height:20%;
                           display: inline-block;
                           width: 20%;
-                        margin-left:3rem;
-                        margin-top: 3rem
+                        margin-left: 10rem;
+                        margin-top: 5rem;
                     
                     }
       #right-div{color: white;
@@ -95,9 +100,11 @@
                           height:20%;
                           display: inline-block;
                           width: 20%;
-                          margin-right:3rem;
-                        margin-top: 3rem;
+                          margin-right: 10rem;
+                          margin-top: 5rem;
+                        
                         }
+
                         #left-div p, #right-div p {
         font-size: 26px;
     }
@@ -114,13 +121,13 @@
     #left-div strong{
         font-size: 60px;
         font-weight: bolder;
-        color: #00ffff;
+        color: #d20094;
 
     }
     #right-div strong{
         font-size: 60px;
         font-weight: bolder;
-        color: #d20093d4;
+        color: #00ffff;
 
     }
 
@@ -153,16 +160,26 @@
         border: 1px solid #ffffff;
         background-color: transparent;
         appearance: none;
-        padding: 0.5em 2em 0.5em 2em;
+        padding: 0.5rem 2rem 0.5rem 2rem;
         font-weight: 800;
         margin: 0 auto 0 auto;
-        margin-bottom: 2em;
+        margin-bottom: 2rem;
+        margin-left: 2.8rem;
         
       }
       .button{
         font-family: 'Outfit', sans-serif;
         text-align: center;
       }
+
+      #button{
+        margin: 0 auto;
+        margin-right: 3.5rem;
+      }
+
+
+
+
       a{
         font-family: 'Outfit', sans-serif;
         color:white;
@@ -183,31 +200,31 @@
     </div>
 <div id="right-div"></div>
 </article>
-    <div class="button">
+    <div id="button" class="button">
       <button onclick="feedback()">RATE US</button>
     </div>
   </body>
 
   <script>
-    let score = sessionStorage.getItem("score");
-    function feedback(){
-    window.open("/feedback-page.html");
-  }
+  //   let score = sessionStorage.getItem("score");
+  //   function feedback(){
+  //   window.open("/feedback-page.html");
+  // }
 
-    let numeroDomande = sessionStorage.getItem("numeroDomande");
+  //   let numeroDomande = sessionStorage.getItem("numeroDomande");
 
 
-    let wrongAnswers = numeroDomande - score;
+  //   let wrongAnswers = numeroDomande - score;
 
-// let score = 15
-// let numeroDomande = 30
-// let wrongAnswers = numeroDomande - score
+let score = 15
+let numeroDomande = 30
+let wrongAnswers = numeroDomande - score
 
 let leftDiv = document.getElementById('left-div')
 let rightDiv = document.getElementById('right-div')
 
-leftDiv.innerHTML = `<h2> Correct <br><strong id='strong'>${Math.floor((score / numeroDomande) * 100)}%</strong><h2><br><p> ${score}/${numeroDomande} questions<p/>`
-rightDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnswers / numeroDomande) * 100)}%</strong><h2><br> <p>${wrongAnswers}/${numeroDomande} questions<p/>`
+rightDiv.innerHTML = `<h2> Correct <br><strong id='strong'>${Math.floor((score / numeroDomande) * 100)}%</strong><h2><br><p> ${score}/${numeroDomande} questions<p/>`
+leftDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnswers / numeroDomande) * 100)}%</strong><h2><br> <p>${wrongAnswers}/${numeroDomande} questions<p/>`
 
 
 
@@ -221,7 +238,7 @@ rightDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnsw
         let fontSize = (height / 400).toFixed(2)
         ctx.font = fontSize + "em sans-serif";
         ctx.textBaseline = "middle";
-        ctx.font = "22px Arial";
+        ctx.font = "16px Arial";
         ctx.fillStyle = "white";
         var text2 ="You passed the exam. "
         text2.fillStyle="#00ffff"
@@ -249,7 +266,7 @@ rightDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnsw
         lines.push(line);
 
         for (var i = 0; i < lines.length; i++) {
-          ctx.fillText(lines[i], 400, 147 + (i * 30));
+          ctx.fillText(lines[i], 295, 140 + (i * 30));
         }
         }
         else if (score / numeroDomande < 0.6) {
@@ -267,7 +284,7 @@ rightDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnsw
         lines.push(line);
 
         for (var i = 0; i < lines.length; i++) {
-          ctx.fillText(lines[i], 405 , 250 + (i * 30));
+          ctx.fillText(lines[i], 300 , 185 + (i * 30));
         }
         }
 
@@ -290,16 +307,16 @@ rightDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnsw
             data: [score, wrongAnswers],
             backgroundColor: ["#00FFFF", "#D20094"],
             borderWidth: 0,
-            borderColor: "#777",
-            hoverBorderWidth: 3,
-            hoverBorderColor: "#777a",
-            boxShadow: 2 
+            borderColor: "#fff",
+            hoverBorderWidth: 1,
+            hoverBorderColor: "#fff",
+            boxShadow: 3 
           },
         ],
       },
       options: {
         cutoutPercentage: 65,
-        rotation: Math.PI * 0.2,
+        rotation: Math.PI * 1.5,
         //   title:{
         //     display: true,
         //     fontSize: 26,
