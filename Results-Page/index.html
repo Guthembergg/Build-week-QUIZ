@@ -73,8 +73,7 @@ margin-top: -60px;
 
       img {
         width: 130px;
-        margin-top: 40px;
-        margin-left: 300px;
+        margin-left: 250px;
         margin-top: 40px;
 }
       
@@ -221,19 +220,15 @@ figure{
   </body>
 
   <script>
-  //   let score = sessionStorage.getItem("score");
-  //   function feedback(){
-  //   window.open("/feedback-page.html");
-  // }
+     let score = sessionStorage.getItem("score");
+     function feedback(){
+     window.open("/feedback-page.html", "_self");
+    }
+   
+     let numeroDomande = sessionStorage.getItem("numeroDomande")
+     let wrongAnswers = numeroDomande - score;
+     
 
-  //   let numeroDomande = sessionStorage.getItem("numeroDomande");
-
-
-  //   let wrongAnswers = numeroDomande - score;
-
-let score = 10
-let numeroDomande = 30
-let wrongAnswers = numeroDomande - score
 
 let leftDiv = document.getElementById('left-div')
 let rightDiv = document.getElementById('right-div')

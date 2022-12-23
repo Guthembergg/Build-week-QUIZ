@@ -7,7 +7,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   color: white;
-  /* margin: 20px 20px; */
+  margin: 0;
 }
 
 h2 {
@@ -35,7 +35,7 @@ button {
 }
 .logo {
   width: 130px;
-  margin-left: 300px;
+  margin-left: 250px;
   margin-top: 40px;
 }
 input {
@@ -73,7 +73,7 @@ button {
 button:active {
   font-family: 'Outfit', sans-serif;
   border: 3px solid #00ffff;
-  color: #00ffff;
+  color: darkblue;
   box-shadow: 1px 1px 10px 13px #00ffff;
   -webkit-box-shadow: 4px -3px 54px -2px #00ffff;
   -moz-box-shadow: 4px -3px 54px -2px #00ffff;

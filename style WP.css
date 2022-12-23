@@ -2,6 +2,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 23px;
   color: white;
+  
 
 }
 
@@ -16,7 +17,8 @@
   background-image: url(/img\ WP/bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 40em;
+  height: 100%;
+  margin:0
 }
 
 .text {
