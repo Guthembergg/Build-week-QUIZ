@@ -52,6 +52,16 @@
         text-align: center;
       }
 
+
+h2{
+
+margin-top: -60px;
+
+}
+
+
+
+
       h3 {
         text-align: center;
         color: #fff;
@@ -89,8 +99,8 @@ figure{
                           height:20%;
                           display: inline-block;
                           width: 20%;
-                        margin-left: 10rem;
-                        margin-top: 5rem;
+                        margin-left: 13rem;
+                        margin-top: 7.8rem;
                     
                     }
       #right-div{color: white;
@@ -100,8 +110,8 @@ figure{
                           height:20%;
                           display: inline-block;
                           width: 20%;
-                          margin-right: 10rem;
-                          margin-top: 5rem;
+                          margin-right: 13rem;
+                          margin-top: 7.8rem;
                         
                         }
 
@@ -115,7 +125,8 @@ figure{
      
     
     article{
-        display:flex
+        display:flex;
+        margin-bottom: 3.5rem;
     }
       
     #left-div strong{
@@ -129,6 +140,10 @@ figure{
         font-weight: bolder;
         color: #00ffff;
 
+    }
+
+    .p-chart{
+      margin: 0;
     }
 
       button:hover {
@@ -178,7 +193,7 @@ figure{
       }
 
 
-
+      
 
       a{
         font-family: 'Outfit', sans-serif;
@@ -196,7 +211,7 @@ figure{
     <article>
     <div id="left-div"></div>
     <div class="container">
-      <canvas id="myChart"></canvas>
+      <canvas id="myChart" ></canvas>
     </div>
 <div id="right-div"></div>
 </article>
@@ -216,15 +231,15 @@ figure{
 
   //   let wrongAnswers = numeroDomande - score;
 
-let score = 15
+let score = 10
 let numeroDomande = 30
 let wrongAnswers = numeroDomande - score
 
 let leftDiv = document.getElementById('left-div')
 let rightDiv = document.getElementById('right-div')
 
-rightDiv.innerHTML = `<h2> Correct <br><strong id='strong'>${Math.floor((score / numeroDomande) * 100)}%</strong><h2><br><p> ${score}/${numeroDomande} questions<p/>`
-leftDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnswers / numeroDomande) * 100)}%</strong><h2><br> <p>${wrongAnswers}/${numeroDomande} questions<p/>`
+rightDiv.innerHTML = `<h2> Correct <br><strong id='strong'>${Math.floor((score / numeroDomande) * 100)}%</strong><h2><br><p class="p-chart"> ${score}/${numeroDomande} questions<p/>`
+leftDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnswers / numeroDomande) * 100)}%</strong><h2><br> <p class="p-chart">${wrongAnswers}/${numeroDomande} questions<p/>`
 
 
 
@@ -238,7 +253,7 @@ leftDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnswe
         let fontSize = (height / 400).toFixed(2)
         ctx.font = fontSize + "em sans-serif";
         ctx.textBaseline = "middle";
-        ctx.font = "16px Arial";
+        ctx.font = "14px Arial";
         ctx.fillStyle = "white";
         var text2 ="You passed the exam. "
         text2.fillStyle="#00ffff"
@@ -266,7 +281,7 @@ leftDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnswe
         lines.push(line);
 
         for (var i = 0; i < lines.length; i++) {
-          ctx.fillText(lines[i], 295, 140 + (i * 30));
+          ctx.fillText(lines[i], 250, 120 + (i * 30));
         }
         }
         else if (score / numeroDomande < 0.6) {
@@ -284,7 +299,7 @@ leftDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnswe
         lines.push(line);
 
         for (var i = 0; i < lines.length; i++) {
-          ctx.fillText(lines[i], 300 , 185 + (i * 30));
+          ctx.fillText(lines[i], 250 , 165 + (i * 30));
         }
         }
 
@@ -310,12 +325,12 @@ leftDiv.innerHTML = `<h2> Wrong <br><strong id='strong'>${Math.floor((wrongAnswe
             borderColor: "#fff",
             hoverBorderWidth: 1,
             hoverBorderColor: "#fff",
-            boxShadow: 3 
+            boxShadow: 3,
           },
         ],
       },
       options: {
-        cutoutPercentage: 65,
+        cutoutPercentage: 75,
         rotation: Math.PI * 1.5,
         //   title:{
         //     display: true,
