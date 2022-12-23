@@ -276,7 +276,7 @@ difficulty.onclick = function (e) {
   setInterval(
     function () {
       //countdown = Tempo;
-      let length2 = domande2.length - 2;
+      let length2 = domande2.length;
       countdown--;
       if (countdown === 0 && currentQuestion < length2) {
         currentQuestion++;
@@ -420,17 +420,18 @@ function generateQuiz(domande) {
           sbagliateScritta +
           `<div class="sbagliate"><h3>${arraySbagliate[i].domandaCorrente})<i> ${arraySbagliate[i].numeroQuestion}</i> <br>you replied: </h3><h4>${arraySbagliate[i].answer}</h4> <h3>, the correct answer was: </h3><h5>${arraySbagliate[i].giusta}<h5></div>`;
       }
-      if(arraySbagliate.length>0){
-        
+      if (arraySbagliate.length > 0) {
         sbagliateScritta =
-        sbagliateScritta +
-        `<button type="submit" id="continua"> NEXT </button>`;
+          sbagliateScritta +
+          `<button type="submit" id="continua"> NEXT </button>`;
 
         quizContainer.innerHTML = sbagliateScritta;
         quizContainer.addEventListener("submit", (event) => {
           window.location.href = "/Results-Page/index.html";
         });
-      }else{window.location.href = "/Results-Page/index.html";}
+      } else {
+        window.location.href = "/Results-Page/index.html";
+      }
       //body.appendChild(sbagliate);
     }
   });
