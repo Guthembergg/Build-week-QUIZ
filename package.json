@@ -1,0 +1,20 @@
+{
+  "name": "build-week-quiz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "WP.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guthembergg/Build-week-QUIZ.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Guthembergg/Build-week-QUIZ/issues"
+  },
+  "homepage": "https://github.com/Guthembergg/Build-week-QUIZ#readme"
+}
